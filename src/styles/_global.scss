@@ -1,0 +1,20 @@
+*, *::before, *::after{
+  box-sizing: border-box;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+body{
+  margin: 0;
+  font-family: "Avenir Next LT Pro";
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+ul{
+  list-style-type: none;
+  padding-inline-start: 0;
+}
