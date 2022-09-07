@@ -2,29 +2,40 @@
 @use '../../../styles/colours' as *;
 @use '../../../styles/colours' as *;
 @use '../../../styles/global' as *;
+
 .add-item-section {
     border: 1px solid grey;
+
     &__header-icon {
         width: 50px;
         height: 50px;
     }
+
     &__header {
         border-bottom: 1px solid #BDC5D5;
         padding: 24px;
         display: flex;
+        align-items: center;
+        gap: 8px;
     }
+
     &__title {
         font-size: 28px;
         line-height: 36px;
         font-weight: bold;
         width: 100%;
-        
+
     }
+
     &__buttons {
         display: flex;
         gap: 10px;
         padding: 16px;
         background-color: $lightgrey;
+
+        @include tablet {
+            justify-content: flex-end;
+        }
     }
 
     &__cancel-button {
@@ -33,7 +44,13 @@
         border: 1px solid $cloud;
         background-color: white;
         border-radius: 16px;
+
+        @include tablet {
+            width: fit-content;
+            padding: 0 16px;
+        }
     }
+
     &__add-button {
         width: 50%;
         height: 36px;
@@ -41,6 +58,11 @@
         border: none;
         background-color: $instock-indigo;
         border-radius: 20px;
+
+        @include tablet {
+            width: fit-content;
+            padding: 0 16px;
+        }
     }
 
 }
@@ -50,22 +72,36 @@
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid $cloud;
+    width: 100%;
+
+    @include tablet {
+        border-right: 1px solid $cloud;
+        border-bottom: none;
+        margin: 24px 0 24px 24px;
+        padding-right: 24px;
+        padding-top: 0px;
+    }
+
     &__subhead {
         font-size: 20px;
         line-height: 28px;
         font-weight: bold;
-        margin-bottom: 24px;
+        margin-bottom: 16px;
     }
+
     &__item-name-label {
         @include form-label-styling;
     }
+
     &__item-name-input {
         width: 100%;
         @include input-styling;
     }
+
     &__item-desc-label {
         @include form-label-styling;
     }
+
     &__item-description-input {
         width: 100%;
         resize: none;
@@ -82,19 +118,28 @@
         width: 100%;
         @include input-styling;
         padding-right: 20px;
+        appearance: none;
+        background-image: url(../../../assets/icons/arrow_drop_down-24px.svg);
+        background-repeat: no-repeat;
+        background-position: right 12px center;
     }
 }
 
 .item-availability {
+    width: 100%;
     padding: 24px;
+
     &__subhead {
         font-size: 20px;
         line-height: 28px;
         font-weight: bold;
+        padding-bottom: 8px;
     }
+
     &__quantity-label {
         @include form-label-styling;
     }
+
     &__status-label {
         @include form-label-styling;
     }
@@ -102,19 +147,42 @@
     &__warehouse-label {
         @include form-label-styling;
     }
+
     &__quantity-input {
         display: block;
         width: 100%;
         @include input-styling;
+
         &::placeholder {
             color: black;
         }
-        
+
     }
+
+    &__radio-buttons {
+        display: flex;
+        width: 100%;
+        gap: 40px;
+    }
+
     &__item-warehouse-input {
         display: block;
         width: 100%;
         @include input-styling;
+        appearance: none;
+        background-image: url(../../../assets/icons/arrow_drop_down-24px.svg);
+        background-repeat: no-repeat;
+        background-position: right 12px center;
     }
 }
 
+.details-and-availability {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include tablet {
+        flex-direction: row;
+
+    }
+}
