@@ -5,6 +5,7 @@ import WarehousesPage from "./pages/WarehousesPage"
 import InventoryPage from "./pages/InventoryPage"
 import ErrorPage from "./pages/ErrorPage"
 import Footer from "./components/Footer/Footer"
+import AddInventory from "./components/Inventory/AddInventory/AddInventory"
 
 function App() {
 	return (
@@ -13,13 +14,13 @@ function App() {
 				<Header />
 				<Routes>
 					<Route path="/" element={<Navigate to="/warehouses"/>} />
-					<Route path="/warehouses" element={<WarehousesPage />} />
+					<Route path="/warehouses" element={<AddInventory />} />
 					<Route path="/warehouses/:warehouseId" element={<WarehousesPage />} />
 					<Route path="/inventory" element={<InventoryPage />} />
 					<Route path="/inventory/:itemId" element={<InventoryPage />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
-				<Footer />
+				{/* <Footer /> */}
 			</BrowserRouter>
 		</>
 	)
