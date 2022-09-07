@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import ArrowIcon from "../../../assets/icons/arrow_back-24px.svg";
-import EditIcon from "../../../assets/icons/edit-24px.svg";
+import EditIcon from "../../../assets/icons/edit.svg";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
