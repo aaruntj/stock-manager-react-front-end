@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./InventoryCard.scss";
 import ArrowIcon from "../../../assets/icons/chevron_right-24px.svg";
 import DeleteIcon from "../../../assets/icons/delete.svg";
@@ -11,8 +13,10 @@ const InventoryCard = ({ item }) => {
 					<div className="card__box">
 						<h4 className="card__label">INVENTORY ITEM</h4>
 						<div className="card__link-container">
-							<span className="card__link">{item.itemName}</span>{" "}
-							<img src={ArrowIcon} alt="" />
+							<Link to={`/inventory/${item.id}`} className="card__link">
+								<span className="card__item-link">{item.itemName}</span>{" "}
+								<img src={ArrowIcon} alt="" />
+							</Link>
 						</div>
 					</div>
 					<div className="card__box">
