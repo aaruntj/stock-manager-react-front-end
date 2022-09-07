@@ -21,6 +21,17 @@
 		color: #13182c;
 	}
 
+	&__link-container {
+		display: flex;
+		align-items: center;
+	}
+
+	&__link {
+		color: #2e66e5;
+		font-size: 0.8rem;
+		font-weight: 600;
+	}
+
 	&__status-green {
 		display: flex;
 		justify-content: center;
