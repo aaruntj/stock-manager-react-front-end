@@ -1,9 +1,8 @@
-import React from 'react'
+import Inventory from "../components/Inventory/Inventory/Inventory";
 
-function InventoryPage() {
-  return (
-    <div>InventoryPage</div>
-  )
-}
+const InventoryPage = () => {
+	return <Inventory />;
+};
 
-export default InventoryPage
+export default InventoryPage;
+
