@@ -1,0 +1,96 @@
+.add-item-section {
+    border: 1px solid grey;
+    
+    &__header {
+        border-bottom: 1px solid #BDC5D5;
+        padding: 24px;
+    }
+    &__title {
+        font-size: 32px;
+        line-height: 40px;
+        font-weight: bold;
+        width: 100%;
+    }
+    &__buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    &__cancel-button {
+        width: 50%;
+        height: 36px;
+    }
+    &__add-button {
+        width: 50%;
+        height: 36px;
+    }
+}
+
+.item-details {
+    padding: 24px;
+    &__subhead {
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: bold;
+    }
+    &__item-name-label {
+        display: block;
+        font-size: 13px;
+        line-height: 20px;
+        font-weight: bold;
+    }
+    &__item-name-input {
+        width: 100%;
+    }
+    &__item-desc-label {
+        display: block;
+        font-size: 13px;
+        line-height: 20px;
+        font-weight: bold;
+    }
+    &__item-description-input {
+        width: 100%;
+        resize: none;
+    }
+
+    &__item-category-label {
+        display: block;
+        font-size: 13px;
+        line-height: 20px;
+        font-weight: bold;
+    }
+
+    &__item-category-input {
+        width: 100%;
+    }
+}
+
+.item-availability {
+    padding: 24px;
+    &__subhead {
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: bold;
+    }
+    &__quantity-label {
+        display: block;
+        font-size: 13px;
+        line-height: 20px;
+        font-weight: bold;
+    }
+    &__status-label {
+        display: block;
+        font-size: 13px;
+        line-height: 20px;
+        font-weight: bold;
+    }
+    &__quantity-input {
+        display: block;
+        width: 100%;
+        
+    }
+    &__item-warehouse-input {
+        display: block;
+        width: 100%;
+    }
+}
