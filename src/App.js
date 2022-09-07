@@ -1,5 +1,7 @@
+import InventoryPage from "./pages/InventoryPage";
+
 function App() {
-	return <h1>The best time ever!💥 </h1>;
+	return <InventoryPage />;
 }
 
 export default App;
