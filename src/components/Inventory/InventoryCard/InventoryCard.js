@@ -11,7 +11,7 @@ const InventoryCard = ({ item }) => {
 			<div className="card">
 				<div className="card__container">
 					<div className="card__box">
-						<h4 className="card__label">INVENTORY ITEM</h4>
+						<span className="card__label card__hide">INVENTORY ITEM</span>
 						<div className="card__link-container">
 							<Link to={`/inventory/${item.id}`} className="card__link">
 								<span className="card__item-link">{item.itemName}</span>{" "}
@@ -20,22 +20,30 @@ const InventoryCard = ({ item }) => {
 						</div>
 					</div>
 					<div className="card__box">
-						<h4 className="card__label">CATEGOTY</h4>
+						<span className="card__label card__hide">CATEGOTY</span>
 						<p className="card__item">{item.category}</p>
 					</div>
 				</div>
 
 				<div className="card__container">
 					<div className="card__box">
-						<h4 className="card__label">STATUS</h4>
-						<p className="card__status-green">{item.status.toUpperCase()}</p>
+						<span className="card__label card__hide">STATUS</span>
+						<p
+							className={`${
+								item.status === "In Stock"
+									? "card__status-green"
+									: "card__status-red"
+							}`}
+						>
+							{item.status.toUpperCase()}
+						</p>
 					</div>
 					<div className="card__box">
-						<h4 className="card__label">QTY</h4>
+						<span className="card__label card__hide">QTY</span>
 						<p className="card__item">{item.quantity}</p>
 					</div>
 					<div className="card__box">
-						<h4 className="card__label">WAREHOUSE</h4>
+						<span className="card__label card__hide">WAREHOUSE</span>
 						<p className="card__item">{item.warehouseName}</p>
 					</div>
 				</div>
