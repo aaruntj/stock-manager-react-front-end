@@ -61,14 +61,4 @@
 		justify-content: space-between;
 		align-items: center;
 	}
-
-	&__delete-btn {
-		background: url("../../../assets/icons/delete.svg") no-repeat;
-		cursor: pointer;
-	}
-
-	&__edit-btn {
-		background: url("../../../assets/icons/edit.svg") no-repeat;
-		cursor: pointer;
-	}
 }

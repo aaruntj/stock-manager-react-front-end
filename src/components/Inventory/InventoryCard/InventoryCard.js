@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 import "./InventoryCard.scss";
 import ArrowIcon from "../../../assets/icons/chevron_right-24px.svg";
-import DeleteIcon from "../../../assets/icons/delete.svg";
-import EditIcon from "../../../assets/icons/edit.svg";
+import DeleteIcon from "../../../assets/icons/delete_outline-24px.svg";
+import EditIcon from "../../../assets/icons/edit-24px.svg";
 
 const InventoryCard = ({ item }) => {
 	return (
