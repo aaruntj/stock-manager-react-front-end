@@ -6,6 +6,7 @@ import DeleteIcon from "../../../assets/icons/delete_outline-24px.svg";
 import EditIcon from "../../../assets/icons/edit-24px.svg";
 
 const InventoryCard = ({ item }) => {
+	console.log(item);
 	return (
 		<div className="card__section">
 			<div className="card">
@@ -28,7 +29,9 @@ const InventoryCard = ({ item }) => {
 				<div className="card__container">
 					<div className="card__box">
 						<h4 className="card__label">STATUS</h4>
-						<p className="card__status-green">{item.status.toUpperCase()}</p>
+						<p className={`${item.status === "In Stock" ? "green" : "orange"}`}>
+							{item.status.toUpperCase()}
+						</p>
 					</div>
 					<div className="card__box">
 						<h4 className="card__label">QTY</h4>

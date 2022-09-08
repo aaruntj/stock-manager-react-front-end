@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import "./InventoryDetails.scss";
 import ArrowIcon from "../../../assets/icons/arrow_back-24px.svg";
@@ -10,6 +10,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const InventoryDetails = () => {
 	const [item, setItem] = useState(null);
+	const [openModal, setOpenModal] = useState(false);
 	console.log(item);
 	const { itemId } = useParams();
 
@@ -28,6 +29,11 @@ const InventoryDetails = () => {
 		getItemDetails();
 	}, [itemId]);
 
+	//------- Open Modal Handler ----------
+	const clickModal = () => {
+		setOpenModal(true);
+	};
+
 	//-------- safe guard ---------
 	if (item === null || item === undefined) {
 		return <h1>Loading...</h1>;
@@ -37,10 +43,17 @@ const InventoryDetails = () => {
 		<section className="inventory-item">
 			<div className="inventory-item__header-container">
 				<span className="inventory-item__title">
-					<img src={ArrowIcon} alt="" />
+					<Link to={"/inventory"} className="inventory-item__link">
+						<img src={ArrowIcon} alt="" />
+					</Link>
 					<h1>{item.itemName}</h1>
 				</span>
-				<img className="inventory-item__edit" src={EditIcon} alt="" />
+				<img
+					className="inventory-item__edit"
+					src={EditIcon}
+					alt=""
+					onClick={clickModal}
+				/>
 			</div>
 			<div className="inventory-item__details">
 				<span className="inventory-item__label">ITEM DESCRIPTION:</span>
