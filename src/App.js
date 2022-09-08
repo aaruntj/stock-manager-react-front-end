@@ -12,10 +12,10 @@ function App() {
 			<BrowserRouter>
 				<Header />
 				<Routes>
-					{/*	<Route path="/" element={<Navigate to="/warehouses"/>} />
+					<Route path="/" element={<Navigate to="/warehouses" />} />
 					<Route path="/warehouses" element={<WarehousesPage />} />
 					<Route path="/warehouses/:warehouseId" element={<WarehousesPage />} />
-				<Route path="*" element={<ErrorPage />} />*/}
+					<Route path="*" element={<ErrorPage />} />
 					<Route path="/inventory" element={<InventoryPage />} />
 					<Route path="/inventory/:itemId" element={<InventoryDetails />} />
 				</Routes>
