@@ -96,6 +96,14 @@
     &__item-name-input {
         width: 100%;
         @include input-styling;
+
+        &--error {
+            border: 1px solid $red;
+        }
+
+        &-error-message {
+            @include form-error-handling
+        }
     }
 
     &__item-desc-label {
@@ -108,6 +116,13 @@
         @include input-styling;
         padding-top: 16px;
         height: 140px;
+        &-error-message {
+            @include form-error-handling
+        }
+
+        &--error {
+            border: 1px solid $red;
+        }
     }
 
     &__item-category-label {
@@ -122,6 +137,17 @@
         background-image: url(../../../assets/icons/arrow_drop_down-24px.svg);
         background-repeat: no-repeat;
         background-position: right 12px center;
+        &-error-message {
+            @include form-error-handling
+        }
+        &--error {
+            border: 1px solid $red;
+        }
+    }
+
+    &__error-icon {
+        height: 16px;
+        width: 16px;
     }
 }
 
@@ -152,6 +178,12 @@
         display: block;
         width: 100%;
         @include input-styling;
+        &-error-message {
+            @include form-error-handling
+        }
+        &--error {
+            border: 1px solid $red;
+        }
 
         &::placeholder {
             color: black;
@@ -173,6 +205,13 @@
         background-image: url(../../../assets/icons/arrow_drop_down-24px.svg);
         background-repeat: no-repeat;
         background-position: right 12px center;
+        &-error-message {
+            @include form-error-handling
+        }
+        &--error {
+            border: 1px solid $red;
+        }
+
     }
 }
 

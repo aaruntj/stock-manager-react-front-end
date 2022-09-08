@@ -3,25 +3,25 @@
 // mobile = 320px+
 
 // tablet = 768px+
-@mixin tablet{
-  @media (min-width: $breakpoint-tablet){
+@mixin tablet {
+  @media (min-width: $breakpoint-tablet) {
     @content;
   }
 }
 
 // desktop = 1280px+
 @mixin desktop {
-  @media (min-width: $breakpoint-desktop){
+  @media (min-width: $breakpoint-desktop) {
     @content;
   }
 }
 
 @mixin input-styling {
-    border-radius: 20px;
-    border: 1px solid $cloud;
-    min-height: 36px;
-    margin-bottom: 16px;
-    padding-left: 16px;
+  border-radius: 20px;
+  border: 1px solid $cloud;
+  min-height: 36px;
+  margin-bottom: 4px;
+  padding-left: 16px;
 }
 
 @mixin form-label-styling {
@@ -31,4 +31,12 @@
   font-weight: bold;
   padding-top: 16px;
   padding-bottom: 4px;
+}
+
+@mixin form-error-handling {
+  display: none;
+  font-size: 12px;
+  align-items: center;
+  color: $red;
+  gap: 4px;
 }
