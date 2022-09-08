@@ -10,17 +10,14 @@ function AddInventory() {
     var itemSelected = document.querySelector(classToQuery);
     var errorItemSelected = document.querySelector(classToQuery + "-error-message");
     if (itemValue === "") {
-      console.log("there is no text")
       itemSelected.classList.add(classToAddIfError)
       errorItemSelected.style.display = "flex";
       return
     } else {
       if (itemSelected.classList.contains(classToAddIfError)) {
         itemSelected.classList.remove(classToAddIfError)
-        console.log("should remove error message")
         errorItemSelected.style.display = "none";
       }
-      console.log("there is text")
     }
   }
 
@@ -31,10 +28,7 @@ function AddInventory() {
     validater(".item-availability__quantity-input", "item-availability__quantity-input--error")
     validater(".item-availability__item-warehouse-input", "item-availability__item-warehouse-input--error")
 
-    console.log("CONFIRMED THERE'S TEXT IN EVERY FIELD!")
-
-
-
+    //CALL THE SERVER HERE 
 
   }
 
@@ -93,7 +87,7 @@ function AddInventory() {
                   <label htmlFor="item-status">Out of stock</label>
                 </div>
               </div>
-              
+
               <label htmlFor="quantity" className='item-availability__quantity-label'>Quantity</label>
               <input type="text" name="quantity" className="item-availability__quantity-input" placeholder='0' />
               <div className="item-availability__quantity-input-error-message">
@@ -124,9 +118,6 @@ function AddInventory() {
               + Add Item
             </button>
           </div>
-
-
-
         </form>
       </section>
     </>)
