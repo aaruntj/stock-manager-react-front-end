@@ -1,0 +1,6 @@
+@use '../../../styles/mixins' as *;
+
+.test {
+    @include page-header();
+    background-color: red;
+}
