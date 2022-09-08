@@ -4,6 +4,7 @@ import WarehousesPage from "./pages/WarehousesPage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Footer from "./components/Footer/Footer";
+import InventoryDetails from "./components/Inventory/InventoryDetails/InventoryDetails";
 
 function App() {
 	return (
@@ -16,7 +17,7 @@ function App() {
 					<Route path="/warehouses/:warehouseId" element={<WarehousesPage />} />
 				<Route path="*" element={<ErrorPage />} />*/}
 					<Route path="/inventory" element={<InventoryPage />} />
-					<Route path="/inventory/:itemId" element={<InventoryPage />} />
+					<Route path="/inventory/:itemId" element={<InventoryDetails />} />
 				</Routes>
 				{/*<Footer /> */}
 			</BrowserRouter>
