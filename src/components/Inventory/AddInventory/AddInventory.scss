@@ -4,7 +4,30 @@
 @use '../../../styles/global' as *;
 
 .add-item-section {
-    border: 1px solid grey;
+
+    margin: 0 24px;
+    border-radius: 4px;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 2px 5px 0px rgba(19, 24, 44, 0.2);
+
+    &__container {
+        position: relative;
+
+    }
+
+    &__header-background {
+        top: 0px;
+        height: 65px;
+        width: 100%;
+        background-color: $graphite;
+        position: absolute;
+        z-index: -1;
+
+        @include tablet {
+            height: 105px;
+        }
+    }
 
     &__header-icon {
         width: 50px;
@@ -17,6 +40,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
+        margin: 0 24px;
     }
 
     &__title {
@@ -31,6 +55,7 @@
         gap: 10px;
         padding: 16px;
         background-color: $lightgrey;
+        border-radius: 0 0 4px 4px;
 
         @include tablet {
             justify-content: flex-end;
@@ -119,6 +144,7 @@
         padding-top: 16px;
         height: 140px;
         @include body-medium;
+
         &-error-message {
             @include form-error-handling;
             @include body-small;
@@ -143,10 +169,12 @@
         background-repeat: no-repeat;
         background-position: right 12px center;
         @include body-medium;
+
         &-error-message {
             @include form-error-handling;
             @include body-small;
         }
+
         &--error {
             border: 1px solid $red;
         }
@@ -187,10 +215,12 @@
         width: 100%;
         @include input-styling;
         @include body-medium;
+
         &-error-message {
             @include form-error-handling;
             @include body-small;
         }
+
         &--error {
             border: 1px solid $red;
         }
@@ -217,10 +247,12 @@
         background-repeat: no-repeat;
         background-position: right 12px center;
         @include body-medium;
+
         &-error-message {
             @include form-error-handling;
             @include body-small;
         }
+
         &--error {
             border: 1px solid $red;
         }
