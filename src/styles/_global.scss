@@ -46,9 +46,9 @@ ul {
 	}
 
 	&__title {
-		font-size: 1.75rem;
-		font-weight: 600;
 		color: $instock-black;
+		font-weight: 600;
+		@include page-header;
 	}
 
 	&__btn {
@@ -85,9 +85,9 @@ ul {
 	}
 
 	&__label {
-		font-size: 0.7rem;
 		color: $slate;
 		font-weight: 600;
+		@include table-header;
 	}
 
 	&__label-icon {
@@ -118,12 +118,12 @@ ul {
 		padding: 0.6rem 0;
 
 		@include tablet {
-			width: 95%;
+			width: 93%;
 		}
 	}
 
 	&__container-right {
-		width: 40%;
+		width: 65%;
 
 		@include tablet {
 			flex-direction: row;
@@ -134,7 +134,7 @@ ul {
 	}
 
 	&__container-left {
-		width: 53%;
+		width: 76%;
 
 		@include tablet {
 			flex-direction: row;
@@ -152,18 +152,19 @@ ul {
 
 	&__box {
 		@include tablet {
-			width: 35%;
+			width: 45%;
 		}
 	}
 
 	&__label {
-		font-size: 0.7rem;
 		color: $slate;
+		@include labels-links-buttons;
 	}
 
 	&__item {
-		font-size: 0.8rem;
 		color: $instock-black;
+		@include labels-links-buttons;
+		font-weight: 400;
 	}
 
 	&__link-container {
@@ -172,8 +173,8 @@ ul {
 	}
 
 	&__link {
+		@include labels-links-buttons;
 		color: $instock-indigo;
-		font-size: 0.8rem;
 		font-weight: 600;
 		text-decoration: none;
 		display: flex;
@@ -181,10 +182,11 @@ ul {
 	}
 
 	&__status-green {
+		@include body-small;
+		font-weight: 600;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 0.7rem;
 		color: $green;
 		background-color: rgba(21, 132, 99, 0.07);
 		border-radius: 1.25rem;
@@ -199,10 +201,11 @@ ul {
 	}
 
 	&__status-red {
+		@include body-small;
+		font-weight: 600;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 0.7rem;
 		color: $red;
 		background-color: rgba(201, 69, 21, 0.07);
 		border-radius: 1.25rem;
