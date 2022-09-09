@@ -15,6 +15,10 @@
   @include tablet {
     margin: 0 2rem;
   }
+  @include desktop {
+    max-width: 1020px;
+    margin: 0 auto;
+  }
   &__title {
     @include page-header;
     margin-left: 0.75rem;
@@ -58,8 +62,10 @@
   &__label {
     @include labels-links-buttons;
     font-weight: 700;
+    position: relative;
   }
   &__input {
+    outline: none;
     height: 36px;
     width: 100%;
     border-radius: 20px;
@@ -67,6 +73,12 @@
     border: 1px solid $cloud;
     margin-top: 0.25rem;
     margin-bottom: 1rem;
+    &:focus {
+      border: 1px solid $instock-indigo;
+    }
+    &--not-valid {
+      border: 1px solid $red;
+    }
   }
 }
 
@@ -107,5 +119,22 @@
   &--save {
     background-color: $instock-indigo;
     color: $white;
+  }
+}
+
+.error-message {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  bottom: 18px;
+  &__img {
+    height: 13px;
+    margin-right: 5px;
+  }
+  &__text {
+    font-size: 12px;
+    color: $red;
+    width: 10rem;
   }
 }

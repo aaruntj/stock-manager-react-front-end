@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./EditWarehouse.scss";
 import backArrow from "../../../assets/icons/arrow_back-24px.svg";
+import error from "../../../assets/icons/error-24px.svg";
 
 function EditWarehouse() {
   const warehouse = {
@@ -39,10 +40,14 @@ function EditWarehouse() {
             Warehouse Name
             <input
               name="warehouseName"
-              className="form__input"
+              className="form__input form__input--not-valid"
               type="text"
               value={warehouseName}
             />
+            <div className="error-message">
+              <img className="error-message__img" src={error} />
+              <p className="error-message__text">This field is required</p>
+            </div>
           </label>
           <label className="form__label" htmlFor="streetAddress">
             Street Address
@@ -57,7 +62,7 @@ function EditWarehouse() {
             City
             <input
               name="city"
-              className="form__input"
+              className="form__input "
               type="text"
               value={city}
             />
