@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
-import WarehousesPage from "./pages/WarehousesPage";
+import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Footer from "./components/Footer/Footer";
