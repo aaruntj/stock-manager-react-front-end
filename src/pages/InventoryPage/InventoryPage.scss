@@ -1,57 +1,66 @@
 @use "../../styles/colours" as *;
 @use "../../styles/mixins" as *;
+@use "../../styles/global" as *;
 
-.inventory {
-	background-color: $white;
-	box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-	border-radius: 3px;
-	margin: 0 5%;
+// .inventory {
+// 	background-color: $white;
+// 	box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+// 	border-radius: 3px;
+// 	margin: 0 5%;
 
-	&__header-container {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 4% 5%;
-	}
+// 	&__header-container {
+// 		padding: 1rem 0;
 
-	&__header {
-		font-size: 1.75rem;
-		font-weight: 600;
-		color: $instock-black;
-	}
+// 		@include tablet {
+// 			display: flex;
+// 			align-items: center;
+// 			justify-content: space-between;
+// 			padding: 4% 5%;
+// 		}
+// 	}
 
-	&__btn {
-		display: flex;
-		align-items: center;
-		padding: 0.5rem 5.4rem;
-		background: $instock-indigo;
-		border-radius: 1.25rem;
-		border: none;
-		color: $white;
-		font-weight: 600;
-		font-size: 0.8rem;
+// 	&__header {
+// 		font-size: 1.75rem;
+// 		font-weight: 600;
+// 		color: $instock-black;
+// 		padding: 1rem 0;
+// 	}
 
-		@include tablet {
-			width: 8rem;
-			height: 2.4rem;
-			padding: 0.5rem 1rem;
-		}
-	}
+// 	&__btn {
+// 		display: flex;
+// 		align-items: center;
+// 		padding: 0.5rem 5.4rem;
+// 		background: $instock-indigo;
+// 		border-radius: 1.25rem;
+// 		border: none;
+// 		color: $white;
+// 		font-weight: 600;
+// 		font-size: 0.8rem;
 
-	&__list-container {
-		display: flex;
-		justify-content: space-between;
-		padding: 1% 5%;
-		background: rgba(247, 248, 249, 0.7);
-	}
+// 		@include tablet {
+// 			width: 8rem;
+// 			height: 2.4rem;
+// 			padding: 0.5rem 1rem;
+// 		}
+// 	}
 
-	&__box {
-		display: flex;
-		align-items: center;
-	}
+// 	&__list-container {
+// 		display: none;
+// 		@include tablet {
+// 			display: flex;
+// 			justify-content: space-between;
+// 			padding: 1% 5%;
+// 			background: rgba(247, 248, 249, 0.7);
+// 		}
+// 	}
 
-	&__label {
-		font-size: 0.7rem;
-		color: $slate;
-	}
-}
+// 	&__box {
+// 		display: flex;
+// 		align-items: center;
+// 	}
+
+// 	&__label {
+// 		font-size: 0.7rem;
+// 		color: $slate;
+// 	}
+// }
