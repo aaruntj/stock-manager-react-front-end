@@ -102,7 +102,7 @@ ul {
 	&__section {
 		padding: 0.6rem;
 		border-top: 1px solid $cloud;
-		padding: 0 5%;
+		padding: 5%;
 
 		@include tablet {
 			display: flex;
@@ -115,7 +115,6 @@ ul {
 	&__content {
 		display: flex;
 		justify-content: space-between;
-		padding: 0.6rem 0;
 
 		@include tablet {
 			width: 93%;
@@ -123,7 +122,11 @@ ul {
 	}
 
 	&__container-right {
-		width: 65%;
+		width: 75%;
+
+		@include tablet {
+			width: 65%;
+		}
 
 		@include tablet {
 			flex-direction: row;
@@ -151,6 +154,7 @@ ul {
 	}
 
 	&__box {
+		margin-bottom: 0.6rem;
 		@include tablet {
 			width: 45%;
 		}
@@ -158,6 +162,7 @@ ul {
 
 	&__label {
 		color: $slate;
+		font-weight: 600;
 		@include labels-links-buttons;
 	}
 
@@ -168,8 +173,10 @@ ul {
 	}
 
 	&__link-container {
-		margin-top: 0.7rem;
-		margin-bottom: 1rem;
+		@include tablet {
+			margin-top: 0.7rem;
+			margin-bottom: 1rem;
+		}
 	}
 
 	&__link {
@@ -193,10 +200,12 @@ ul {
 		padding: 0.25rem 0.5rem;
 		width: 3.8rem;
 		height: 1.5rem;
+		margin-top: 0.3rem;
 
 		@include tablet {
 			width: 5rem;
 			height: 1.62rem;
+			margin-top: 0;
 		}
 	}
 
@@ -229,7 +238,12 @@ ul {
 	}
 
 	&__btn-icon {
-		width: 0.9rem;
+		width: 1.12rem;
 		height: 1.12rem;
+
+		@include tablet {
+			width: 0.9rem;
+			height: 1.12rem;
+		}
 	}
 }
