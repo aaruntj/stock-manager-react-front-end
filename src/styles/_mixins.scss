@@ -1,6 +1,6 @@
 @use "variables" as *;
-@use "typography";
-
+@use "colours" as *;
+@use 'typography';
 // mobile = 320px+
 
 // tablet = 768px+
@@ -12,18 +12,43 @@
 
 // desktop = 1280px+
 @mixin desktop {
-	@media (min-width: $breakpoint-desktop) {
-		@content;
-	}
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
 }
 
-@mixin page-header() {
-	font-size: 1.75rem;
-	line-height: 2.25rem;
-	@include tablet {
-		font-size: 2rem;
-		line-height: 2.5rem;
-	}
+@mixin input-styling {
+  border-radius: 20px;
+  border: 1px solid $cloud;
+  min-height: 36px;
+  margin-bottom: 4px;
+  padding-left: 16px;
+}
+
+@mixin form-label-styling {
+  display: block;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: bold;
+  padding-top: 16px;
+  padding-bottom: 4px;
+}
+
+@mixin form-error-handling {
+  display: none;
+  font-size: 12px;
+  align-items: center;
+  color: $red;
+  gap: 4px;
+
+}
+@mixin page-header(){
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  @include tablet{
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
 }
 @mixin subheader {
 	font-size: 1.25rem;
