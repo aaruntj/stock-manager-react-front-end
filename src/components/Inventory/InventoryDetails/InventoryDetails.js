@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 
 import "./InventoryDetails.scss";
 import ArrowIcon from "../../../assets/icons/arrow_back-24px.svg";
-import EditIcon from "../../../assets/icons/edit-24px.svg";
+import EditIcon from "../../../assets/icons/edit-white.svg";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -55,7 +55,7 @@ const InventoryDetails = () => {
 						alt=""
 						onClick={clickModal}
 					/>
-					<span className="inventory-item__btn inventory-item__hide">Edit</span>
+					<span className="inventory-item__btn-text">Edit</span>
 				</div>
 			</div>
 			<div className="inventory-item__details">
@@ -70,11 +70,19 @@ const InventoryDetails = () => {
 					</div>
 				</div>
 
-				<div className="inventory-item-left">
-					<div className="inventory-item__container">
+				<div className="inventory-item__left">
+					<div className="inventory-item__status-container">
 						<div className="inventory-item__box">
 							<span className="inventory-item__label">STATUS:</span>
-							<p className="inventory-item__status-green">{item.category}</p>
+							<p
+								className={`${
+									item.status === "In Stock"
+										? "inventory-item__status-green"
+										: "inventory-item__status-red"
+								}`}
+							>
+								{item.status.toUpperCase()}
+							</p>
 						</div>
 						<div className="inventory-item__box">
 							<span className="inventory-item__label">QUANTITY:</span>
