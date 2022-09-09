@@ -12,6 +12,9 @@
   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
   border-radius: 3px;
   margin: 0 1rem;
+  @include tablet {
+    margin: 0 2rem;
+  }
   &__title {
     @include page-header;
     margin-left: 0.75rem;
@@ -26,12 +29,26 @@
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
+  @include tablet {
+    flex-direction: row;
+  }
   &__container {
     width: 100%;
     border-bottom: 1px solid $cloud;
     padding: 1rem;
     &--contacts {
       border-bottom: none;
+    }
+    @include tablet {
+      border-bottom: none;
+      border-right: 1px solid $cloud;
+      padding: 0 2rem;
+      margin: 1.5rem 0;
+      &--contacts {
+        border-right: none;
+      }
     }
   }
   &__subtitle {
@@ -58,11 +75,15 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 8px;
+  padding: 0.5rem;
   border: none;
   border-radius: 20px;
   height: 2.25rem;
   width: 100%;
+  @include tablet {
+    padding: 0.5rem 1rem;
+    width: auto;
+  }
   &:first-of-type {
     margin-right: 1rem;
   }
@@ -73,6 +94,10 @@
     width: 100%;
     background-color: $lightgrey;
     padding: 1rem;
+    @include tablet {
+      justify-content: flex-end;
+      padding: 1rem 2rem;
+    }
   }
   &--cancel {
     color: $slate;
