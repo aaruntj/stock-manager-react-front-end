@@ -18,6 +18,8 @@
 }
 
 @mixin page-header(){
+  font-family: "Titillium Web";
+  font-weight: 600;
   font-size: 1.75rem;
   line-height: 2.25rem;
   @include tablet{
@@ -26,6 +28,8 @@
   }
 }
 @mixin subheader{
+  font-family: "Titillium Web";
+  font-weight: 600;
   font-size: 1.25rem;
   line-height: 1.75rem;
   @include tablet{
@@ -34,6 +38,8 @@
   }
 }
 @mixin labels-links-buttons{
+  font-family: "Titillium Web";
+  font-weight: 600;
   font-size: 0.813rem;
   line-height: 1.25rem;
   @include tablet{
@@ -42,6 +48,8 @@
   }
 }
 @mixin table-header{
+  font-family: "Titillium Web";
+  font-weight: 600;
   font-size: 0.688rem;
   line-height: 1rem;
   @include tablet{
@@ -50,6 +58,7 @@
   }
 }
 @mixin body-large{
+  font-family: "Titillium Web";
   font-size: 0.938rem;
   line-height: 1.625rem;
   @include tablet{
@@ -58,6 +67,7 @@
   }
 }
 @mixin body-medium{
+  font-family: "Titillium Web";
   font-size: 0.813rem;
   line-height: 1.25rem;
   @include tablet{
@@ -66,6 +76,7 @@
   }
 }
 @mixin body-small{
+  font-family: "Titillium Web";
   font-size: 0.688rem;
   line-height: 1rem;
   @include tablet{
