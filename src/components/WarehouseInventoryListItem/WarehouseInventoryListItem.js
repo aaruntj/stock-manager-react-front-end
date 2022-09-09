@@ -11,14 +11,16 @@ function WarehouseInventoryListItem({ warehouseInventoryObj, setShowModal, setde
     return (
         <>
             <div className="group">
-                <span>{warehouseInventoryObj.itemName}</span>
+                <Link to={`/inventory/:{warehouseInventoryObj.id}`}>
+                    <span>{warehouseInventoryObj.itemName}</span>
+                </Link>
                 <span>{warehouseInventoryObj.category}</span>
                 <span>{warehouseInventoryObj.status}</span>
                 <span>{warehouseInventoryObj.quantity}</span>
                 <button onClick={deleteButtonHandler}>delete</button>
                 {/* NEED TO LINK TO PROPER PAGE */}
                 {/* <Link to={`/`}> */}
-                    <button>edit</button>
+                <button>edit</button>
                 {/* </div></Link> */}
             </div>
 
