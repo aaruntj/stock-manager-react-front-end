@@ -1,5 +1,5 @@
-@use "../../../styles/colours" as *;
-@use "../../../styles/mixins" as *;
+@use "../../styles/colours" as *;
+@use "../../styles/mixins" as *;
 
 .inventory {
 	background-color: $white;
@@ -11,7 +11,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0 5%;
+		padding: 4% 5%;
 	}
 
 	&__header {
@@ -30,5 +30,28 @@
 		color: $white;
 		font-weight: 600;
 		font-size: 0.8rem;
+
+		@include tablet {
+			width: 8rem;
+			height: 2.4rem;
+			padding: 0.5rem 1rem;
+		}
+	}
+
+	&__list-container {
+		display: flex;
+		justify-content: space-between;
+		padding: 1% 5%;
+		background: rgba(247, 248, 249, 0.7);
+	}
+
+	&__box {
+		display: flex;
+		align-items: center;
+	}
+
+	&__label {
+		font-size: 0.7rem;
+		color: $slate;
 	}
 }

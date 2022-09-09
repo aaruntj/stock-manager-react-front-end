@@ -1,7 +1,11 @@
 import React from "react";
 import axios from "axios";
-import InventoryCard from "../../components/Inventory/InventoryCard/InventoryCard";
+
 import "./InventoryPage.scss";
+
+import InventoryCard from "../../components/Inventory/InventoryCard/InventoryCard";
+import ArrowSort from "../../assets/icons/sort-24px.svg";
+
 const { useEffect, useState } = require("react");
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -36,6 +40,32 @@ const InventoryList = () => {
 				<button className="inventory__btn">+ Add New Item</button>
 			</div>
 			<div className="inventory__list">
+				<div className="inventory__list-container">
+					<div className="inventory__box">
+						<span className="inventory__label ">INVENTORY ITEM</span>
+						<img src={ArrowSort} alt="" />
+					</div>
+					<div className="inventory__box">
+						<span className="inventory__label ">CATEGOTY</span>
+						<img src={ArrowSort} alt="" />
+					</div>
+					<div className="inventory__box">
+						<span className="inventory__label ">STATUS</span>
+						<img src={ArrowSort} alt="" />
+					</div>
+					<div className="inventory__box">
+						<span className="inventory__label ">QTY</span>
+						<img src={ArrowSort} alt="" />
+					</div>
+					<div className="inventory__box">
+						<span className="inventory__label ">WAREHOUSE</span>
+						<img src={ArrowSort} alt="" />
+					</div>
+					<div className="inventory__box">
+						<span className="inventory__label ">ACTION</span>
+						<img src={ArrowSort} alt="" />
+					</div>
+				</div>
 				{inventory.map((item, index) => (
 					<InventoryCard key={index} item={item} />
 				))}

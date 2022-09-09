@@ -24,6 +24,8 @@
 		@include tablet {
 			display: flex;
 			justify-content: space-between;
+			border-top: 0;
+			border-bottom: 1px solid $cloud;
 		}
 	}
 
@@ -80,6 +82,11 @@
 		padding: 0.25rem 0.5rem;
 		width: 3.8rem;
 		height: 1.5rem;
+
+		@include tablet {
+			width: 5rem;
+			height: 1.62rem;
+		}
 	}
 
 	&__status-red {
@@ -93,6 +100,10 @@
 		padding: 0.25rem 0.5rem;
 		width: 5.4rem;
 		height: 1.5rem;
+
+		@include tablet {
+			width: 6.4rem;
+		}
 	}
 
 	&__btn-container {
