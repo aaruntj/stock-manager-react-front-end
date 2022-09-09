@@ -42,37 +42,50 @@ const InventoryDetails = () => {
 	return (
 		<section className="inventory-item">
 			<div className="inventory-item__header-container">
-				<span className="inventory-item__title">
+				<div className="inventory-item__title">
 					<Link to={"/inventory"} className="inventory-item__link">
-						<img src={ArrowIcon} alt="" />
+						<img className="inventory-item__icon" src={ArrowIcon} alt="" />
 					</Link>
-					<h1>{item.itemName}</h1>
-				</span>
-				<img
-					className="inventory-item__edit"
-					src={EditIcon}
-					alt=""
-					onClick={clickModal}
-				/>
+					<h1 className="inventory-item__title">{item.itemName}</h1>
+				</div>
+				<div className="inventory-item__btn-container">
+					<img
+						className="inventory-item__edit inventory-item__icon"
+						src={EditIcon}
+						alt=""
+						onClick={clickModal}
+					/>
+					<span className="inventory-item__btn inventory-item__hide">Edit</span>
+				</div>
 			</div>
 			<div className="inventory-item__details">
-				<span className="inventory-item__label">ITEM DESCRIPTION:</span>
-				<p className="inventory-item__content">{item.description}</p>
-				<span className="inventory-item__label">CATEGORY:</span>
-				<p className="inventory-item__content">{item.category}</p>
-				<div className="inventory-item__container">
+				<div className="inventory-item__right">
 					<div className="inventory-item__box">
-						<span className="inventory-item__label">STATUS:</span>
-						<p className="inventory-item__status-green">{item.category}</p>
+						<span className="inventory-item__label">ITEM DESCRIPTION:</span>
+						<p className="inventory-item__content">{item.description}</p>
 					</div>
 					<div className="inventory-item__box">
-						<span className="inventory-item__label">QUANTITY:</span>
-						<p className="inventory-item__content">{item.quantity}</p>
+						<span className="inventory-item__label">CATEGORY:</span>
+						<p className="inventory-item__content">{item.category}</p>
 					</div>
 				</div>
 
-				<span className="inventory-item__label">WAREHOUSE:</span>
-				<p className="inventory-item__content">{item.warehouseName}</p>
+				<div className="inventory-item-left">
+					<div className="inventory-item__container">
+						<div className="inventory-item__box">
+							<span className="inventory-item__label">STATUS:</span>
+							<p className="inventory-item__status-green">{item.category}</p>
+						</div>
+						<div className="inventory-item__box">
+							<span className="inventory-item__label">QUANTITY:</span>
+							<p className="inventory-item__content">{item.quantity}</p>
+						</div>
+					</div>
+					<div className="inventory-item__box">
+						<span className="inventory-item__label">WAREHOUSE:</span>
+						<p className="inventory-item__content">{item.warehouseName}</p>
+					</div>
+				</div>
 			</div>
 		</section>
 	);
