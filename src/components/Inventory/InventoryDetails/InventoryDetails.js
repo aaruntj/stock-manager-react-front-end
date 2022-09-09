@@ -50,7 +50,7 @@ const InventoryDetails = () => {
 				</div>
 				<div className="inventory-item__btn-container">
 					<img
-						className="inventory-item__edit inventory-item__icon"
+						className="inventory-item__icon"
 						src={EditIcon}
 						alt=""
 						onClick={clickModal}
