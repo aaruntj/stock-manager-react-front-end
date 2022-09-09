@@ -29,6 +29,9 @@
     width: 100%;
     border-bottom: 1px solid $cloud;
     padding: 2rem 1.5rem 1.5rem;
+    &-back {
+      cursor: pointer;
+    }
   }
 }
 
@@ -92,6 +95,7 @@
   border-radius: 20px;
   height: 2.25rem;
   width: 100%;
+  cursor: pointer;
   @include tablet {
     padding: 0.5rem 1rem;
     width: auto;
@@ -113,21 +117,32 @@
   }
   &--cancel {
     color: $slate;
-    background-color: #ffffff;
-    border: 1px solid #bdc5d5;
+    background-color: $white;
+    border: 1px solid $cloud;
+    &:hover {
+      border: 1px solid $instock-indigo;
+      color: $instock-indigo;
+    }
   }
   &--save {
     background-color: $instock-indigo;
     color: $white;
+    &:hover {
+      background-color: $graphite;
+    }
   }
 }
 
 .error-message {
+  visibility: hidden;
+  &--visible {
+    visibility: visible;
+  }
   display: flex;
   flex-direction: row;
   align-items: center;
   position: absolute;
-  bottom: 18px;
+  bottom: -30px;
   &__img {
     height: 13px;
     margin-right: 5px;
