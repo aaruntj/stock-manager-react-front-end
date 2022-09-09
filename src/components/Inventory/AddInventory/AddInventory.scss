@@ -21,7 +21,6 @@
 
     &__title {
         @include page-header();
-        font-family: "Titillium Web";
         font-weight: 600;
         width: 100%;
 
@@ -84,30 +83,33 @@
 
     &__subhead {
         @include subheader;
-        font-family: "Titillium Web";
-        font-weight: 600;
         margin-bottom: 16px;
     }
 
     &__item-name-label {
         @include form-label-styling;
+        @include labels-links-buttons;
     }
 
     &__item-name-input {
         width: 100%;
         @include input-styling;
+        @include body-medium;
 
         &--error {
             border: 1px solid $red;
         }
 
         &-error-message {
-            @include form-error-handling
+            @include form-error-handling;
+            @include body-small;
+            font-size: 22px;
         }
     }
 
     &__item-desc-label {
         @include form-label-styling;
+        @include labels-links-buttons;
     }
 
     &__item-description-input {
@@ -116,8 +118,10 @@
         @include input-styling;
         padding-top: 16px;
         height: 140px;
+        @include body-medium;
         &-error-message {
-            @include form-error-handling
+            @include form-error-handling;
+            @include body-small;
         }
 
         &--error {
@@ -127,6 +131,7 @@
 
     &__item-category-label {
         @include form-label-styling;
+        @include labels-links-buttons;
     }
 
     &__item-category-input {
@@ -137,8 +142,10 @@
         background-image: url(../../../assets/icons/arrow_drop_down-24px.svg);
         background-repeat: no-repeat;
         background-position: right 12px center;
+        @include body-medium;
         &-error-message {
-            @include form-error-handling
+            @include form-error-handling;
+            @include body-small;
         }
         &--error {
             border: 1px solid $red;
@@ -156,30 +163,33 @@
     padding: 24px;
 
     &__subhead {
-        font-size: 20px;
-        line-height: 28px;
-        font-weight: bold;
         padding-bottom: 8px;
+        @include subheader;
     }
 
     &__quantity-label {
         @include form-label-styling;
+        @include labels-links-buttons;
     }
 
     &__status-label {
         @include form-label-styling;
+        @include labels-links-buttons;
     }
 
     &__warehouse-label {
         @include form-label-styling;
+        @include labels-links-buttons;
     }
 
     &__quantity-input {
         display: block;
         width: 100%;
         @include input-styling;
+        @include body-medium;
         &-error-message {
-            @include form-error-handling
+            @include form-error-handling;
+            @include body-small;
         }
         &--error {
             border: 1px solid $red;
@@ -195,6 +205,7 @@
         display: flex;
         width: 100%;
         gap: 40px;
+        @include body-medium;
     }
 
     &__item-warehouse-input {
@@ -205,8 +216,10 @@
         background-image: url(../../../assets/icons/arrow_drop_down-24px.svg);
         background-repeat: no-repeat;
         background-position: right 12px center;
+        @include body-medium;
         &-error-message {
-            @include form-error-handling
+            @include form-error-handling;
+            @include body-small;
         }
         &--error {
             border: 1px solid $red;

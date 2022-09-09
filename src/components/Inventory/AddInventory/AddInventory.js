@@ -2,6 +2,8 @@
 
 import React from 'react'
 import './AddInventory.scss'
+import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function AddInventory() {
 
@@ -12,23 +14,45 @@ function AddInventory() {
     if (itemValue === "") {
       itemSelected.classList.add(classToAddIfError)
       errorItemSelected.style.display = "flex";
-      return
+      return false
     } else {
       if (itemSelected.classList.contains(classToAddIfError)) {
         itemSelected.classList.remove(classToAddIfError)
         errorItemSelected.style.display = "none";
+        return true
       }
     }
   }
 
   let submitHandler = () => {
-    validater(".item-details__item-name-input", "item-details__item-name-input--error")
-    validater(".item-details__item-description-input", "item-details__item-description-input--error")
-    validater(".item-details__item-category-input", "item-details__item-category-input--error")
-    validater(".item-availability__quantity-input", "item-availability__quantity-input--error")
-    validater(".item-availability__item-warehouse-input", "item-availability__item-warehouse-input--error")
+    if (validater(".item-details__item-name-input", "item-details__item-name-input--error") === false) return
+    if (validater(".item-details__item-description-input", "item-details__item-description-input--error") === false) return
+    if (validater(".item-details__item-category-input", "item-details__item-category-input--error") === false) return
+    if (validater(".item-availability__quantity-input", "item-availability__quantity-input--error") === false) return
+    if (validater(".item-availability__item-warehouse-input", "item-availability__item-warehouse-input--error") === false) return
+    console.log("should only hit this point if there's text in everything")
 
     //CALL THE SERVER HERE 
+    const dataToSend = JSON.stringify({ name: 'John Doe' });
+    var nameValue = document.querySelector(".item-details__item-name-input").value;
+    var descriptionValue = document.querySelector(".item-details__item-description-input").value;
+    var categoryValue = document.querySelector(".item-details__item-category-input").value;
+    var quantityValue = document.querySelector(".item-availability__quantity-input").value;
+    var warehouseValue = document.querySelector(".item-availability__item-warehouse-input").value;
+    let objToSend = {
+      //need to generate an id on the server side
+      //need to find the correct warehouse id
+      warehouseName: warehouseValue,
+      itemName: nameValue,
+      description: descriptionValue,
+      category: categoryValue,
+      status: "In Stock",
+      quantity: parseInt(quantityValue)
+    }
+    const stringifiedObject = JSON.stringify(objToSend);
+    console.log(objToSend)
+
+    
 
   }
 
@@ -37,7 +61,9 @@ function AddInventory() {
     <>
       <section className="add-item-section">
         <div className="add-item-section__header">
-          <img src={require('../../../assets/icons/arrow_back-24px.svg').default} className="add-item-section__header-icon" alt="" />
+          <Link to="/inventory">
+            <img src={require('../../../assets/icons/arrow_back-24px.svg').default} className="add-item-section__header-icon" alt="" />
+          </Link>
           <div className="add-item-section__title">Add New Inventory Item</div>
         </div>
         <form className='add-item-form' >
@@ -50,13 +76,13 @@ function AddInventory() {
               <input type="text" name="itemSelected" className="item-details__item-name-input" placeholder='Item Name' />
               <div className="item-details__item-name-input-error-message">
                 <img src={require('../../../assets/icons/error-24px.svg').default} className="item-details__error-icon" alt="" />
-                <p>This field is required</p>
+                <span>This field is required</span>
               </div>
               <label htmlFor="itemDesc" className='item-details__item-desc-label'>Description</label>
               <textarea className="item-details__item-description-input" name="itemDesc" placeholder='Please enter a brief item description...'></textarea>
               <div className="item-details__item-description-input-error-message">
                 <img src={require('../../../assets/icons/error-24px.svg').default} className="item-details__error-icon" alt="" />
-                <p>This field is required</p>
+                <span> This field is required</span>
               </div>
               <label htmlFor="itemCategory" className='item-details__item-category-label'>Category</label>
               <select name="itemCategory" className="item-details__item-category-input">
@@ -69,7 +95,7 @@ function AddInventory() {
               </select>
               <div className="item-details__item-category-input-error-message">
                 <img src={require('../../../assets/icons/error-24px.svg').default} className="item-details__error-icon" alt="" />
-                <p>This field is required</p>
+                <span>This field is required</span>
               </div>
             </div>
             <div className="item-availability">
@@ -92,7 +118,7 @@ function AddInventory() {
               <input type="text" name="quantity" className="item-availability__quantity-input" placeholder='0' />
               <div className="item-availability__quantity-input-error-message">
                 <img src={require('../../../assets/icons/error-24px.svg').default} className="item-details__error-icon" alt="" />
-                <p>This field is required</p>
+                <span>This field is required</span>
               </div>
               <label htmlFor="itemWarehouse" className='item-availability__warehouse-label'>Warehouse</label>
               <select name="itemWarehouse" className="item-availability__item-warehouse-input">
@@ -108,7 +134,7 @@ function AddInventory() {
               </select>
               <div className="item-availability__item-warehouse-input-error-message">
                 <img src={require('../../../assets/icons/error-24px.svg').default} className="item-details__error-icon" alt="" />
-                <p>This field is required</p>
+                <span>This field is required</span>
               </div>
             </div>
           </div>
