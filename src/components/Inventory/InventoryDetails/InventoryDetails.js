@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import "./InventoryDetails.scss";
 import ArrowIcon from "../../../assets/icons/arrow_back-24px.svg";
@@ -37,7 +37,9 @@ const InventoryDetails = () => {
 		<section className="inventory-item">
 			<div className="inventory-item__header-container">
 				<span className="inventory-item__title">
-					<img src={ArrowIcon} alt="" />
+					<Link to={"/inventory"} className="inventory-item__link">
+						<img src={ArrowIcon} alt="" />
+					</Link>
 					<h1>{item.itemName}</h1>
 				</span>
 				<img className="inventory-item__edit" src={EditIcon} alt="" />
