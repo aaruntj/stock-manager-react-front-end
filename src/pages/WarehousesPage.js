@@ -1,8 +1,11 @@
 import React from 'react'
+import AddInventory from '../components/Inventory/AddInventory/AddInventory'
 
 function WarehousesPage() {
-  return (
+  return ( <>
     <div>WarehousesPage</div>
+    <AddInventory />
+    </>
   )
 }
 

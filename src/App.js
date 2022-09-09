@@ -19,11 +19,7 @@ function App() {
 					<Route path="/inventory" element={<InventoryPage />} />
 					<Route path="/inventory/:itemId" element={<InventoryDetails />} />
 				</Routes>
-<<<<<<< HEAD
-				{/* <Footer /> */}
-=======
 				{/*<Footer /> */}
->>>>>>> develop
 			</BrowserRouter>
 		</>
 	);
