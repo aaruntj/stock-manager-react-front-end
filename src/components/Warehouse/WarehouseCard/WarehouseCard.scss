@@ -13,6 +13,9 @@
 			// width: 64.85vw;
             width: 85%;
 		}
+        @include desktop{
+            width: 85%
+        }
 	}
 	&__container5-right {
 		width: 75%;
@@ -27,6 +30,10 @@
 			align-items: center;
 			justify-content: space-between;
 		}
+        @include desktop {
+			width: 55%;
+		}
+
 	}
     &__container5-left {
 		width: 76%;
@@ -39,6 +46,11 @@
             width: 55%;
             padding-left: 6%;
 		}
+        @include desktop {
+            width: 55%;
+            padding-left: 4%;
+        }
+
 	}
 }
 
