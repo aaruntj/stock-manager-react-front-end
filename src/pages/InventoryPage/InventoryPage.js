@@ -1,7 +1,11 @@
 import React from "react";
 import axios from "axios";
-import InventoryCard from "../../components/Inventory/InventoryCard/InventoryCard";
+
 import "./InventoryPage.scss";
+
+import InventoryCard from "../../components/Inventory/InventoryCard/InventoryCard";
+import ArrowSort from "../../assets/icons/sort-24px.svg";
+
 const { useEffect, useState } = require("react");
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -29,13 +33,38 @@ const InventoryList = () => {
 	}
 
 	return (
-		<section className="inventory">
-			<div className="inventory__header-container">
-				<h1 className="inventory__header">Inventory</h1>
-				<div className="inventory__searchBar"></div>
-				<button className="inventory__btn">+ Add New Item</button>
+		<section className="list__section">
+			<div className="list__header-container">
+				<h1 className="list__title">Inventory</h1>
+				<div className="list__searchBar"></div>
+				<button className="list__btn">+ Add New Item</button>
 			</div>
-			<div className="inventory__list">
+			<div className="list__container">
+				<div className="list__label-container">
+					<div className="list__label-box">
+						<span className="list__label ">INVENTORY ITEM</span>
+						<img className="list__label-icon" src={ArrowSort} alt="" />
+					</div>
+					<div className="list__label-box">
+						<span className="list__label ">CATEGOTY</span>
+						<img className="list__label-icon" src={ArrowSort} alt="" />
+					</div>
+					<div className="list__label-box">
+						<span className="list__label ">STATUS</span>
+						<img className="list__label-icon" src={ArrowSort} alt="" />
+					</div>
+					<div className="list__label-box">
+						<span className="list__label ">QTY</span>
+						<img className="list__label-icon" src={ArrowSort} alt="" />
+					</div>
+					<div className="list__label-box">
+						<span className="list__label ">WAREHOUSE</span>
+						<img className="list__label-icon" src={ArrowSort} alt="" />
+					</div>
+					<div className="list__label-box">
+						<span className="list__label ">ACTION</span>
+					</div>
+				</div>
 				{inventory.map((item, index) => (
 					<InventoryCard key={index} item={item} />
 				))}
