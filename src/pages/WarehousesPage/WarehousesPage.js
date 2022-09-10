@@ -33,7 +33,7 @@ function WarehousesPage() {
 			<div className="warehouse__header-container">
 				<h1 className="warehouse__header">Warehouses</h1>
 				<div className="warehouse__searchBar"></div>
-				<button className="warehouse__btn">+ Add New Warehouse</button>
+				<div className="warehouse__btn">+ Add New Warehouse</div>
 			</div>
 			<div className="warehouse__list">
 				{warehouse.warehouseData.map((warehouse, index) => (
