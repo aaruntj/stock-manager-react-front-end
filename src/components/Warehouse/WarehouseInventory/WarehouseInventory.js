@@ -30,7 +30,7 @@ function Warehouses({warehouse}) {
 						</div>
 					</div>
 					<div className="warehouse__card__box">
-						<h4 className="warehouse__card__label">CATEGOTY</h4>
+						<h4 className="warehouse__card__label">CATEGORY</h4>
 						<p className="warehouse__card__item">{warehouse.category}</p>
 					</div>
 				</div>
