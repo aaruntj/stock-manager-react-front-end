@@ -19,8 +19,9 @@
 
 	&__btn {
 		display: flex;
+    justify-content: center;
 		align-items: center;
-		padding: 0.5rem 5.4rem;
+		padding: 0.5rem;
 		background: #2e66e6;
 		border-radius: 1.25rem;
 		// gap: 10px;
@@ -28,5 +29,6 @@
 		color: #ffffff;
 		font-weight: 600;
 		font-size: 0.8rem;
+    
 	}
 }

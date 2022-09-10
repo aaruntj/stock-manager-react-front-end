@@ -38,8 +38,6 @@ const WarehouseDetails = () => {
 	return (
 		<section className="warehouse">
 			<div className="warehouse__header-container">
-				<h1 className="warehouse__header">Warehouses</h1>
-				<div className="warehouse__searchBar"></div>
 			</div>
 			<div className="warehouse__list">
 				{warehouse.map((warehouse, index) => (
