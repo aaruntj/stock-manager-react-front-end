@@ -7,42 +7,42 @@ import DeleteIcon from "../../../assets/icons/delete_outline-24px.svg";
 import EditIcon from "../../../assets/icons/edit-24px.svg";
 
 function Warehouses({warehouse}) {
-  return (
-    <div className="warehouse__card__section">
-      <div className="warehouse__card">
-        <div className="warehouse__card__container">
-          <div className="warehouse__card__box">
-            <h4 className="warehouse__card__label">WAREHOUSE</h4>
-            <div className="warehouse__card__link-container">
+	return (
+		<div className="row__section">
+			<div className="row__content5">
+				<div className="row__container5-right">
+					<div className="row__box">
+						<span className="row__label row__hide">WAREHOUSE</span>
+						<div className="row__link-container">
               <Link to={`/warehouses/${warehouse.id}`} className="warehouse__card__link">
-                <span className="warehouse__card__item-link">{warehouse.name}</span>{" "}
-                <img src={ArrowIcon} alt="" />
-              </Link>
-            </div>
-          </div>
-          <div className="warehouse__card__box">
-            <h4 className="warehouse__card__label">ADDRESS</h4>
-            <p className="warehouse__card__item">{warehouse.address},{warehouse.city},{warehouse.country}</p>
-          </div>
-        </div>
+								<span className="row__item-link">{warehouse.name}</span>{" "}
+								<img src={ArrowIcon} alt="" />
+							</Link>
+						</div>
+					</div>
+					<div className="row__box">
+						<span className="row__label row__hide">ADDRESS</span>
+						<p className="row__item">{warehouse.address}, {warehouse.city}, {warehouse.country}</p>
+					</div>
+				</div>
 
-        <div className="warehouse__card__container">
-          <div className="warehouse__card__box">
-            <h4 className="warehouse__card__label">CONTACT NAME</h4>
-            <p className="warehouse__card__item">{warehouse.contact.name}</p>
-          </div>
-          <div className="warehouse__card__box">
-            <h4 className="warehouse__card__label">CONTACT INFORMATION</h4>
-            <p className="warehouse__card__item">{warehouse.contact.phone}<br></br>{warehouse.contact.email}</p>
-          </div>
-        </div>
-      </div>
-      <div className="warehouse__card__btn-container">
-        <img src={DeleteIcon} alt="" />
-        <img src={EditIcon} alt="" />
-      </div>
-    </div>
-  );
+				<div className="row__container5-left">
+					<div className="row__box">
+						<span className="row__label row__hide">CONTACT NAME</span>
+						<p className="row__item">{warehouse.contact.name}</p>
+					</div>
+					<div className="row__box">
+						<span className="row__label row__hide">CONTACT INFORMATION</span>
+						<p className="row__item">{warehouse.contact.phone}<br></br>{warehouse.contact.email}</p>
+					</div>
+				</div>
+			</div>
+			<div className="row__btn-container">
+				<img className="row__btn-icon" src={DeleteIcon} alt="" />
+				<img className="row__btn-icon" src={EditIcon} alt="" />
+			</div>
+		</div>
+	);
 };
 
 export default Warehouses
