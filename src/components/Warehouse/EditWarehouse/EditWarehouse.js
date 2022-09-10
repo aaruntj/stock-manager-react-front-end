@@ -1,10 +1,8 @@
-import React from "react";
-import { useState } from "react";
-//eslint-disable-next-line
 import axios from "axios";
+import { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import "./EditWarehouse.scss";
 import backArrow from "../../../assets/icons/arrow_back-24px.svg";
-import error from "../../../assets/icons/error-24px.svg";
 import TextInput from "./TextInput";
 
 function EditWarehouse() {
@@ -30,6 +28,7 @@ function EditWarehouse() {
   const [positionValid, setPositionValid] = useState(true);
   const [phoneValid, setPhoneValid] = useState(true);
   const [emailValid, setEmailValid] = useState(true);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChangeWarehouse = (event) => {
     const { name, value } = event.target;
@@ -86,20 +85,41 @@ function EditWarehouse() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isFormValid()) {
-      console.log("valid");
-    } else {
-      console.log("invalid");
+      let editWarehouse = {
+        id: warehouse.id,
+        name: warehouse.name,
+        address: warehouse.address,
+        city: warehouse.city,
+        country: warehouse.country,
+        contact: {
+          name: warehouse.contact.name,
+          position: warehouse.contact.position,
+          phone: warehouse.contact.phone,
+          email: warehouse.contact.email,
+        },
+      };
+      console.log(editWarehouse);
+      axios
+        .put(`http://localhost:8080/warehouses/${warehouse.id}`, editWarehouse)
+        .then((response) => {
+          navigateWarehousePage();
+        });
     }
   };
+
+  const navigateWarehousePage = () => {
+    setFormSubmitted(true);
+  };
+  if (formSubmitted) {
+    return <Navigate to="/warehouses" />;
+  }
 
   return (
     <div className="component">
       <div className="component__header">
-        <img
-          className="component__header-back"
-          src={backArrow}
-          alt="Back Arrow"
-        />
+        <Link to="/warehouses" className="component__header-back">
+          <img className="" src={backArrow} alt="Back Arrow" />
+        </Link>
         <h1 className="component__title">Edit Warehouse</h1>
       </div>
       <form className="form" onSubmit={handleSubmit}>
@@ -176,8 +196,10 @@ function EditWarehouse() {
           </div>
         </div>
         <div className="button__container">
-          <button className="button button--cancel"> Cancel</button>
-          <button className="button button--save" onClick={handleSubmit}>
+          <Link to="/warehouses" className="button button--cancel">
+            Cancel
+          </Link>
+          <button className="button button--save" type="submit">
             Save
           </button>
         </div>
