@@ -103,83 +103,85 @@ function EditWarehouse() {
         <h1 className="component__title">Edit Warehouse</h1>
       </div>
       <form className="form" onSubmit={handleSubmit}>
-        <div className="form__container">
-          <h2 className="form__subtitle">Warehouse Details</h2>
-          <TextInput
-            name={"name"}
-            label={"Warehouse Name"}
-            value={warehouse.name}
-            isValid={warehouseNameValid}
-            setValid={setWarehouseNameValid}
-            onChange={handleChangeWarehouse}
-          />
-          <TextInput
-            name={"address"}
-            label={"Street Address"}
-            value={warehouse.address}
-            isValid={addressValid}
-            setValid={setAddressValid}
-            onChange={handleChangeWarehouse}
-          />
-          <TextInput
-            name={"city"}
-            label={"City"}
-            value={warehouse.city}
-            isValid={cityValid}
-            setValid={setCityValid}
-            onChange={handleChangeWarehouse}
-          />
-          <TextInput
-            name={"country"}
-            label={"Country"}
-            value={warehouse.country}
-            isValid={countryValid}
-            setValid={setCountryValid}
-            onChange={handleChangeWarehouse}
-          />
+        <div className="form__input-container">
+          <div className="form__container">
+            <h2 className="form__subtitle">Warehouse Details</h2>
+            <TextInput
+              name={"name"}
+              label={"Warehouse Name"}
+              value={warehouse.name}
+              isValid={warehouseNameValid}
+              setValid={setWarehouseNameValid}
+              onChange={handleChangeWarehouse}
+            />
+            <TextInput
+              name={"address"}
+              label={"Street Address"}
+              value={warehouse.address}
+              isValid={addressValid}
+              setValid={setAddressValid}
+              onChange={handleChangeWarehouse}
+            />
+            <TextInput
+              name={"city"}
+              label={"City"}
+              value={warehouse.city}
+              isValid={cityValid}
+              setValid={setCityValid}
+              onChange={handleChangeWarehouse}
+            />
+            <TextInput
+              name={"country"}
+              label={"Country"}
+              value={warehouse.country}
+              isValid={countryValid}
+              setValid={setCountryValid}
+              onChange={handleChangeWarehouse}
+            />
+          </div>
+          <div className="form__container form__container--contacts">
+            <h2 className="form__subtitle">Contact Details</h2>
+            <TextInput
+              name={"name"}
+              label={"Contact Name"}
+              value={warehouse.contact.name}
+              isValid={contactNameValid}
+              setValid={setContactNameValid}
+              onChange={handleChangeContact}
+            />
+            <TextInput
+              name={"position"}
+              label={"Position"}
+              value={warehouse.contact.position}
+              isValid={positionValid}
+              setValid={setPositionValid}
+              onChange={handleChangeContact}
+            />
+            <TextInput
+              name={"phone"}
+              label={"Phone Number"}
+              value={warehouse.contact.phone}
+              isValid={phoneValid}
+              setValid={setPhoneValid}
+              onChange={handleChangeContact}
+            />
+            <TextInput
+              name={"email"}
+              label={"Email"}
+              value={warehouse.contact.email}
+              isValid={emailValid}
+              setValid={setEmailValid}
+              onChange={handleChangeContact}
+            />
+          </div>
         </div>
-        <div className="form__container form__container--contacts">
-          <h2 className="form__subtitle">Contact Details</h2>
-          <TextInput
-            name={"name"}
-            label={"Contact Name"}
-            value={warehouse.contact.name}
-            isValid={contactNameValid}
-            setValid={setContactNameValid}
-            onChange={handleChangeContact}
-          />
-          <TextInput
-            name={"position"}
-            label={"Position"}
-            value={warehouse.contact.position}
-            isValid={positionValid}
-            setValid={setPositionValid}
-            onChange={handleChangeContact}
-          />
-          <TextInput
-            name={"phone"}
-            label={"Phone Number"}
-            value={warehouse.contact.phone}
-            isValid={phoneValid}
-            setValid={setPhoneValid}
-            onChange={handleChangeContact}
-          />
-          <TextInput
-            name={"email"}
-            label={"Email"}
-            value={warehouse.contact.email}
-            isValid={emailValid}
-            setValid={setEmailValid}
-            onChange={handleChangeContact}
-          />
+        <div className="button__container">
+          <button className="button button--cancel"> Cancel</button>
+          <button className="button button--save" onClick={handleSubmit}>
+            Save
+          </button>
         </div>
       </form>
-      <div className="button__container">
-        <button className="button button--cancel"> Cancel</button>
-        <button className="button button--save" onClick={handleSubmit}>
-          Save
-        </button>
-      </div>
     </div>
   );
 }

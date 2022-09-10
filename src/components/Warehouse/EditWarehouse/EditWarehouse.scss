@@ -38,8 +38,12 @@
 .form {
   display: flex;
   flex-direction: column;
-  @include tablet {
-    flex-direction: row;
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+    }
   }
   &__container {
     width: 100%;
