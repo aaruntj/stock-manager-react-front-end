@@ -15,8 +15,7 @@ function Warehouses({warehouse}) {
 						<span className="row__label row__hide">WAREHOUSE</span>
 						<div className="row__link-container">
               <Link to={`/warehouses/${warehouse.id}`} className="warehouse__card__link">
-								<span className="row__item-link">{warehouse.name}</span>{" "}
-								<img src={ArrowIcon} alt="" />
+								<span className="row__link">{warehouse.name}<img src={ArrowIcon} alt="" /></span>{" "}
 							</Link>
 						</div>
 					</div>

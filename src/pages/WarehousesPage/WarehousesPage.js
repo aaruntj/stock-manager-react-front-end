@@ -46,8 +46,9 @@ function WarehousesPage() {
 				<h1 className="list__title">Warehouses</h1>
 				<div className="warehouse__searchBar-container">
         <input className="warehouse__searchBar" type="text" placeholder="Search"></input>
+
+			  	<div className="warehouse__btn">+ Add New Warehouse</div>
         </div>
-				<div className="list__btn">+ Add New Warehouse</div>
 			</div>
 			<div className="list__container">
 				<div className="list__label-container">
