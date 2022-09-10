@@ -16,4 +16,9 @@
 		font-weight: 600;
 		color: #13182c;
 	}
+
+  &__list-label{
+    display: flex;
+    justify-content: space-evenly;
+  }
 }

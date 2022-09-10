@@ -39,6 +39,9 @@ const WarehouseDetails = () => {
 		<section className="warehouse">
 			<div className="warehouse__header-container">
 			</div>
+      <div className="warehouse__list-label">
+
+      </div>
 			<div className="warehouse__list">
 				{warehouse.map((warehouse, index) => (
 					<WarehouseInventory key={index} warehouse={warehouse} />
