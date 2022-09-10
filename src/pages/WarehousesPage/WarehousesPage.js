@@ -32,8 +32,8 @@ function WarehousesPage() {
 		<section className="warehouse">
 			<div className="warehouse__header-container">
 				<h1 className="warehouse__header">Warehouses</h1>
-				<div className="warehouse__searchBar">
-        <input type="text" placeholder="Search"></input>
+				<div className="warehouse__searchBar-container">
+        <input className="warehouse__searchBar" type="text" placeholder="Search"></input>
         </div>
 				<div className="warehouse__btn">+ Add New Warehouse</div>
 			</div>

@@ -4,7 +4,7 @@
 @use '../../../styles/typography' as *;
 @use '../../../styles/global' as *;
 
-.card {
+.warehouse__card {
 	font-family: 'Titillium Web' ;
 	border-top: 1px solid $cloud;
 	display: flex;
