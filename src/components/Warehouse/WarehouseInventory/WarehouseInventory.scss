@@ -4,9 +4,9 @@
 @use '../../../styles/typography' as *;
 @use '../../../styles/global' as *;
 
-.card {
+.warehouse__card {
 	font-family: 'Titillium Web' ;
-	border-top: 1px solid gray;
+	border-top: 1px solid $cloud;
 	display: flex;
 	justify-content: space-between;
 
@@ -41,13 +41,15 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 0.7rem;
+		font-size: 0.6875rem;
+    line-height: 1rem;
 		color: #158463;
 		background-color: rgba(21, 132, 99, 0.07);
 		border-radius: 1.25rem;
 		padding: 0.25rem 0.5rem;
-		width: 3.8rem;
-		height: 1.5rem;
+		width: 4.375rem;
+		height: 1rem;
+    font-weight: 600;
 	}
 
 	&__status-orange {
@@ -59,8 +61,9 @@
 		background-color: rgba(201, 69, 21, 0.07);
 		border-radius: 1.25rem;
 		padding: 0.25rem 0.5rem;
-		width: 3.8rem;
-		height: 1.5rem;
+		width: 4.375rem;
+		height: 1rem;
+    font-weight: 600;
 	}
 
 	&__btn-container {
