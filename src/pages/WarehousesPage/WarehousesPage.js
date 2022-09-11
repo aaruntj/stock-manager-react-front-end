@@ -1,11 +1,3 @@
-// import React from "react";
-// import axios from "axios";
-// import WarehouseCard from "../../components/Warehouse/WarehouseCard/WarehouseCard";
-// import "./WarehousesPage.scss";
-// const { useEffect, useState } = require("react");
-
-// const API_URL = process.env.REACT_APP_API_URL;
-
 import React from "react";
 import axios from "axios";
 
