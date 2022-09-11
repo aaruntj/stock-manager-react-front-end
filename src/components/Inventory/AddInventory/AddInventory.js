@@ -2,16 +2,16 @@
 
 import React, { useEffect } from 'react'
 import './AddInventory.scss'
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
-import {useState} from 'react'
+import { useState } from 'react'
 
 function AddInventory() {
-
+  const navigate = useNavigate();
   console.log("hi")
   let param = useParams()
-  console.log(Object.keys(param).length)
-  
+  console.log(process.env.REACT_APP_API_URL)
+
 
   let [inventoryName, setInventoryName] = useState("")
   let [inventoryDescription, setInventoryDescription] = useState("")
@@ -19,34 +19,33 @@ function AddInventory() {
   let [inventoryCategory, setInventoryCategory] = useState("")
   let [inventoryWarehouse, setInventoryWarehouse] = useState("")
   let [inventoryStatus, setInventoryStatus] = useState("In Stock")
+  let [inventoryId, setInventoryId] = useState("")
 
   const onNameChange = event => setInventoryName(event.target.value)
   const onDescriptionChange = event => setInventoryDescription(event.target.value)
   const onQuantityChange = event => setInventoryQuantity(event.target.value)
   const onCategoryChange = event => setInventoryCategory(event.target.value)
-  const onWarehouseChange = event => setInventoryWarehouse(event.target.value) 
-  
-  
+  const onWarehouseChange = event => setInventoryWarehouse(event.target.value)
+
+
   useEffect(() => {
-    
-    if(Object.keys(param).length !== 0) {
-    
+
+    if (Object.keys(param).length !== 0) {
       axios.get(`http://localhost:8080/inventory/${param.itemId}`).then(response => {
-      let inventoryItem = response.data.inventoryItem 
-      setInventoryName(inventoryItem.itemName)
-      setInventoryDescription(inventoryItem.description)
-      setInventoryQuantity(inventoryItem.quantity)
-      setInventoryCategory(inventoryItem.category)
-      setInventoryWarehouse(inventoryItem.warehouseName)
-      setInventoryStatus(inventoryItem.status)
-      console.log(inventoryItem.status)
-      // document.querySelector(".item-details__item-category-input").value = inventoryItem.category
-      // document.querySelector(".item-details__item-category-input").value = inventoryItem.category
-      
-    })
+        let inventoryItem = response.data.inventoryItem
+        setInventoryName(inventoryItem.itemName)
+        setInventoryDescription(inventoryItem.description)
+        setInventoryQuantity(inventoryItem.quantity)
+        setInventoryCategory(inventoryItem.category)
+        setInventoryWarehouse(inventoryItem.warehouseName)
+        setInventoryStatus(inventoryItem.status)
+
+        setInventoryId(inventoryItem.id)
+
+      })
     }
-  },[])
-   
+  }, [])
+
   let validater = (classToQuery, classToAddIfError) => {
     var itemValue = document.querySelector(classToQuery).value;
     var itemSelected = document.querySelector(classToQuery);
@@ -82,25 +81,41 @@ function AddInventory() {
     let objToSend = {
       //need to generate an id on the server side
       //need to find the correct warehouse id
-      warehouseName: warehouseValue,
-      itemName: nameValue,
-      description: descriptionValue,
-      category: categoryValue,
-      status: "In Stock",
-      quantity: parseInt(quantityValue)
+      warehouseName: inventoryWarehouse,
+      itemName: inventoryName,
+      description: inventoryDescription,
+      category: inventoryCategory,
+      status: inventoryStatus,
+      quantity: inventoryQuantity,
+      id: inventoryId
     }
     const stringifiedObject = JSON.stringify(objToSend);
     console.log(objToSend)
 
+    if (Object.keys(param).length > 0) {
+      //if there were params i.e. if this is an edit request
+      console.log(`${process.env.REACT_APP_API_URL}/${inventoryId}`)
+      axios.put(`${process.env.REACT_APP_API_URL}/inventory/`, objToSend).then(() => {
+        navigate(-1)
+      }
+      ) 
+    } else {
+      delete objToSend["id"]; 
+      console.log(objToSend)
+      // axios.post(`${process.env.REACT_APP_API_URL}/inventory/`, objToSend).then(() => {
+      //   // navigate(-1)
+      //   return
+      // })
+    }
 
-
+    //
   }
-    
+
 
   return (
     <>
       <div className="add-item-section__container">
-        
+
         <section className="add-item-section">
 
           <div className="add-item-section__header">
@@ -108,7 +123,7 @@ function AddInventory() {
             <Link to="/inventory">
               <img src={require('../../../assets/icons/arrow_back-24px.svg').default} className="add-item-section__header-icon" alt="" />
             </Link>
-            <div className="add-item-section__title">{!param ? "Add New Inventory" : "Edit Inventory Item" }</div>
+            <div className="add-item-section__title">{!param ? "Add New Inventory" : "Edit Inventory Item"}</div>
           </div>
           <form className='add-item-form' >
             <div className="details-and-availability">
@@ -117,13 +132,13 @@ function AddInventory() {
                   Item Details
                 </div>
                 <label htmlFor="itemSelected" className='item-details__item-name-label'>Item Name</label>
-                <input type="text" name="itemSelected" className="item-details__item-name-input" value={inventoryName} placeholder='Item Name' onChange={onNameChange}/>
+                <input type="text" name="itemSelected" className="item-details__item-name-input" value={inventoryName} placeholder='Item Name' onChange={onNameChange} />
                 <div className="item-details__item-name-input-error-message">
                   <img src={require('../../../assets/icons/error-24px.svg').default} className="item-details__error-icon" alt="" />
                   <span>This field is required</span>
                 </div>
                 <label htmlFor="itemDesc" className='item-details__item-desc-label'>Description</label>
-                <textarea className="item-details__item-description-input" name="itemDesc" value={inventoryDescription} onChange= {onDescriptionChange} placeholder='Please enter a brief item description...'></textarea>
+                <textarea className="item-details__item-description-input" name="itemDesc" value={inventoryDescription} onChange={onDescriptionChange} placeholder='Please enter a brief item description...'></textarea>
                 <div className="item-details__item-description-input-error-message">
                   <img src={require('../../../assets/icons/error-24px.svg').default} className="item-details__error-icon" alt="" />
                   <span> This field is required</span>
@@ -149,11 +164,11 @@ function AddInventory() {
                 <label htmlFor="itemStatus" className='item-availability__status-label'>Status</label>
                 <div className="item-availability__radio-buttons">
                   <div className="item-availability-radio-button">
-                    <input type="radio" className="item-status__in-stock" name="item-status" value="in stock" onClick={() => setInventoryStatus("In Stock")} checked={inventoryStatus === 'In Stock'} onChange={() => {}} />
+                    <input type="radio" className="item-status__in-stock" name="item-status" value="in stock" onClick={() => setInventoryStatus("In Stock")} checked={inventoryStatus === 'In Stock'} onChange={() => { }} />
                     <label htmlFor="item-status">In stock</label>
                   </div>
                   <div className="item-availability__radio-button">
-                    <input type="radio" className="item-status__out-stock" name="item-status" value="Out of stock" onClick={() => setInventoryStatus("Out of Stock") } checked={inventoryStatus === 'Out of Stock'}  onChange={() => {} }/>
+                    <input type="radio" className="item-status__out-stock" name="item-status" value="Out of stock" onClick={() => setInventoryStatus("Out of Stock")} checked={inventoryStatus === 'Out of Stock'} onChange={() => { }} />
                     <label htmlFor="item-status">Out of stock</label>
                   </div>
                 </div>
