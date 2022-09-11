@@ -3,23 +3,12 @@ import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "./EditWarehouse.scss";
 import backArrow from "../../../assets/icons/arrow_back-24px.svg";
-import TextInput from "./TextInput";
+import TextInput from "../TextInput/TextInput";
 
-function EditWarehouse() {
-  const warehouseData = {
-    id: "5bf7bd6c-2b16-4129-bddc-9d37ff8539e9",
-    name: "Washington",
-    address: "33 Pearl Street SW",
-    city: "Washington",
-    country: "USA",
-    contact: {
-      name: "Greame Lyon",
-      position: "Warehouse Manager",
-      phone: "+1 (646) 123-1234",
-      email: "glyon@instock.com",
-    },
-  };
+function EditWarehouse({ warehouseData }) {
+  //State to track changed warehouse values
   const [warehouse, setWarehouse] = useState(warehouseData);
+  //States to check Validity of input fields
   const [warehouseNameValid, setWarehouseNameValid] = useState(true);
   const [addressValid, setAddressValid] = useState(true);
   const [cityValid, setCityValid] = useState(true);
@@ -28,12 +17,15 @@ function EditWarehouse() {
   const [positionValid, setPositionValid] = useState(true);
   const [phoneValid, setPhoneValid] = useState(true);
   const [emailValid, setEmailValid] = useState(true);
+  // Create state to trigger page redirect on succesfull Uploa
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  // Function to update Warehouse detail text inputs on change
   const handleChangeWarehouse = (event) => {
     const { name, value } = event.target;
     setWarehouse({ ...warehouse, [name]: value });
   };
+  // Function to update Contact detail text inputs on change
   const handleChangeContact = (event) => {
     const { name, value } = event.target;
     setWarehouse((current) => {
@@ -42,6 +34,7 @@ function EditWarehouse() {
       return { ...current, contact };
     });
   };
+  // Function to check if form is valid
   const isFormValid = () => {
     if (
       warehouse.name &&
@@ -82,6 +75,7 @@ function EditWarehouse() {
       return false;
     }
   };
+  // Function to handle the submition of the form
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isFormValid()) {
@@ -98,7 +92,6 @@ function EditWarehouse() {
           email: warehouse.contact.email,
         },
       };
-      console.log(editWarehouse);
       axios
         .put(`http://localhost:8080/warehouses/${warehouse.id}`, editWarehouse)
         .then((response) => {
@@ -106,10 +99,11 @@ function EditWarehouse() {
         });
     }
   };
-
+  // Function to set formsubmitted state on successful submision
   const navigateWarehousePage = () => {
     setFormSubmitted(true);
   };
+  // If the form has been successfully submitted navigate back to warehouse page
   if (formSubmitted) {
     return <Navigate to="/warehouses" />;
   }

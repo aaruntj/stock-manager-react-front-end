@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./TextInput.scss";
 import error from "../../../assets/icons/error-24px.svg";
 
