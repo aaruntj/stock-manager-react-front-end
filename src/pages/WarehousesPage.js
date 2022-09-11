@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
+import EditWarehouse from "../components/Warehouse/EditWarehouse/EditWarehouse";
 
 function WarehousesPage() {
   return (
-    <div>WarehousesPage</div>
-  )
+    <div>
+    </div>
+  );
 }
 
-export default WarehousesPage
+export default WarehousesPage;
