@@ -1,5 +1,7 @@
-import React from 'react'
-import WarehouseDetails from '../components/Warehouse/DetailsWarehouse/WarehouseDetails'
+
+import React from "react";
+import EditWarehouse from "../components/Warehouse/EditWarehouse/EditWarehouse";
+
 
 function WarehousesPage() {
   
@@ -11,15 +13,11 @@ function WarehousesPage() {
   }
   
   return (
-  <>
-    <div>WarehousesPage</div>
-    <WarehouseDetails 
-    warehouseLocation="Washington"
-    warehouseAddress = "2650 NW 5th Avenue"
-    warehouseContact = {textContactObj}
-     />
-  </>
-  )
+
+    <div>
+    </div>
+  );
+
 }
 
-export default WarehousesPage
+export default WarehousesPage;
