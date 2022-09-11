@@ -1,12 +1,52 @@
 //add new inventory item
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import './AddInventory.scss'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
+import {useState} from 'react'
 
 function AddInventory() {
 
+  console.log("hi")
+  let param = useParams()
+  console.log(Object.keys(param).length)
+  
+
+  let [inventoryName, setInventoryName] = useState("")
+  let [inventoryDescription, setInventoryDescription] = useState("")
+  let [inventoryQuantity, setInventoryQuantity] = useState("")
+  let [inventoryCategory, setInventoryCategory] = useState("")
+  let [inventoryWarehouse, setInventoryWarehouse] = useState("")
+  let [inventoryStatus, setInventoryStatus] = useState("In Stock")
+
+  const onNameChange = event => setInventoryName(event.target.value)
+  const onDescriptionChange = event => setInventoryDescription(event.target.value)
+  const onQuantityChange = event => setInventoryQuantity(event.target.value)
+  const onCategoryChange = event => setInventoryCategory(event.target.value)
+  const onWarehouseChange = event => setInventoryWarehouse(event.target.value) 
+  
+  
+  useEffect(() => {
+    
+    if(Object.keys(param).length !== 0) {
+    
+      axios.get(`http://localhost:8080/inventory/${param.itemId}`).then(response => {
+      let inventoryItem = response.data.inventoryItem 
+      setInventoryName(inventoryItem.itemName)
+      setInventoryDescription(inventoryItem.description)
+      setInventoryQuantity(inventoryItem.quantity)
+      setInventoryCategory(inventoryItem.category)
+      setInventoryWarehouse(inventoryItem.warehouseName)
+      setInventoryStatus(inventoryItem.status)
+      console.log(inventoryItem.status)
+      // document.querySelector(".item-details__item-category-input").value = inventoryItem.category
+      // document.querySelector(".item-details__item-category-input").value = inventoryItem.category
+      
+    })
+    }
+  },[])
+   
   let validater = (classToQuery, classToAddIfError) => {
     var itemValue = document.querySelector(classToQuery).value;
     var itemSelected = document.querySelector(classToQuery);
@@ -55,7 +95,7 @@ function AddInventory() {
 
 
   }
-
+    
 
   return (
     <>
@@ -68,7 +108,7 @@ function AddInventory() {
             <Link to="/inventory">
               <img src={require('../../../assets/icons/arrow_back-24px.svg').default} className="add-item-section__header-icon" alt="" />
             </Link>
-            <div className="add-item-section__title">Add New Inventory Item</div>
+            <div className="add-item-section__title">{!param ? "Add New Inventory" : "Edit Inventory Item" }</div>
           </div>
           <form className='add-item-form' >
             <div className="details-and-availability">
@@ -77,20 +117,20 @@ function AddInventory() {
                   Item Details
                 </div>
                 <label htmlFor="itemSelected" className='item-details__item-name-label'>Item Name</label>
-                <input type="text" name="itemSelected" className="item-details__item-name-input" placeholder='Item Name' />
+                <input type="text" name="itemSelected" className="item-details__item-name-input" value={inventoryName} placeholder='Item Name' onChange={onNameChange}/>
                 <div className="item-details__item-name-input-error-message">
                   <img src={require('../../../assets/icons/error-24px.svg').default} className="item-details__error-icon" alt="" />
                   <span>This field is required</span>
                 </div>
                 <label htmlFor="itemDesc" className='item-details__item-desc-label'>Description</label>
-                <textarea className="item-details__item-description-input" name="itemDesc" placeholder='Please enter a brief item description...'></textarea>
+                <textarea className="item-details__item-description-input" name="itemDesc" value={inventoryDescription} onChange= {onDescriptionChange} placeholder='Please enter a brief item description...'></textarea>
                 <div className="item-details__item-description-input-error-message">
                   <img src={require('../../../assets/icons/error-24px.svg').default} className="item-details__error-icon" alt="" />
                   <span> This field is required</span>
                 </div>
                 <label htmlFor="itemCategory" className='item-details__item-category-label'>Category</label>
-                <select name="itemCategory" className="item-details__item-category-input">
-                  <option value="" defaultValue hidden>Please select</option>
+                <select name="itemCategory" value={inventoryCategory} className="item-details__item-category-input" onChange={onCategoryChange}>
+                  <option defaultValue hidden>Please select</option>
                   <option value="Electronics">Electronics</option>
                   <option value="Gear">Gear</option>
                   <option value="Apparel">Apparel</option>
@@ -109,23 +149,23 @@ function AddInventory() {
                 <label htmlFor="itemStatus" className='item-availability__status-label'>Status</label>
                 <div className="item-availability__radio-buttons">
                   <div className="item-availability-radio-button">
-                    <input type="radio" className="item-status__in-stock" name="item-status" value="in stock" defaultChecked />
+                    <input type="radio" className="item-status__in-stock" name="item-status" value="in stock" onClick={() => setInventoryStatus("In Stock")} checked={inventoryStatus === 'In Stock'} onChange={() => {}} />
                     <label htmlFor="item-status">In stock</label>
                   </div>
                   <div className="item-availability__radio-button">
-                    <input type="radio" className="item-status__out-stock" name="item-status" value="Out of stock" />
+                    <input type="radio" className="item-status__out-stock" name="item-status" value="Out of stock" onClick={() => setInventoryStatus("Out of Stock") } checked={inventoryStatus === 'Out of Stock'}  onChange={() => {} }/>
                     <label htmlFor="item-status">Out of stock</label>
                   </div>
                 </div>
 
                 <label htmlFor="quantity" className='item-availability__quantity-label'>Quantity</label>
-                <input type="text" name="quantity" className="item-availability__quantity-input" placeholder='0' />
+                <input type="text" name="quantity" value={inventoryQuantity} onChange={onQuantityChange} className="item-availability__quantity-input" placeholder='0' />
                 <div className="item-availability__quantity-input-error-message">
                   <img src={require('../../../assets/icons/error-24px.svg').default} className="item-details__error-icon" alt="" />
                   <span>This field is required</span>
                 </div>
                 <label htmlFor="itemWarehouse" className='item-availability__warehouse-label'>Warehouse</label>
-                <select name="itemWarehouse" className="item-availability__item-warehouse-input">
+                <select name="itemWarehouse" onChange={onWarehouseChange} value={inventoryWarehouse} className="item-availability__item-warehouse-input">
                   <option value="" defaultValue hidden>Please select</option>
                   <option value="Manhattan">Manhattan</option>
                   <option value="Washington">Washington</option>
