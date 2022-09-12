@@ -7,7 +7,6 @@ import DeleteIcon from "../../../assets/icons/delete_outline-24px.svg";
 import EditIcon from "../../../assets/icons/edit-24px.svg";
 
 function Warehouses({warehouse}) {
-
 	return (
 		<div className="row__section">
 			<div className="row__content5wh">
@@ -47,7 +46,9 @@ function Warehouses({warehouse}) {
 			</div>
 			<div className="row__btn-container">
 				<img className="row__btn-icon" src={DeleteIcon} alt="" />
+				<Link to={`/add-or-edit-inventory/${warehouse.id}`} >
 				<img className="row__btn-icon" src={EditIcon} alt="" />
+				</Link>
 			</div>
 		</div>
 	);
