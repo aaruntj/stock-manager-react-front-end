@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import "./EditWarehouse.scss";
 import backArrow from "../../../assets/icons/arrow_back-24px.svg";
-import TextInput from "./TextInput/TextInput";
+import TextInput from "../TextInput/TextInput";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function EditWarehouse() {
