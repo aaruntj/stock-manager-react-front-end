@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Modal from "../../components/Modal/Model";
-
+import { Link } from 'react-router-dom';
 import "./WarehousesPage.scss";
 
 import WarehouseCard from "../../components/Warehouse/WarehouseCard/WarehouseCard";
@@ -54,7 +54,9 @@ function WarehousesPage() {
             placeholder="Search"
           ></input>
 
-          <div className="warehouse__btn">+ Add New Warehouse</div>
+          <Link to="/warehouses/add">
+            <div className="warehouse__btn">+ Add New Warehouse</div>
+          </Link>
         </div>
       </div>
       <div className="list__container">
