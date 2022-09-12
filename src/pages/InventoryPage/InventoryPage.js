@@ -18,6 +18,7 @@ const InventoryList = () => {
 		activeId: "",
 		activeName: "",
 	});
+	// console.log(modal, modal.activeId, modal.activeName);
 
 	//----- Fetch Inventory List -------
 	useEffect(() => {
@@ -34,6 +35,7 @@ const InventoryList = () => {
 	}, [modal.showModal]);
 
 	const openDeleteModal = (id, name) => {
+		console.log(id, name);
 		setModal({ showModal: !modal.showModal, activeName: name, activeId: id });
 	};
 
@@ -65,7 +67,7 @@ const InventoryList = () => {
 								<img className="list__label-icon" src={ArrowSort} alt="" />
 							</div>
 							<div className="list__label-box">
-								<span className="list__label ">CATEGOTY</span>
+								<span className="list__label ">CATEGORY</span>
 								<img className="list__label-icon" src={ArrowSort} alt="" />
 							</div>
 						</div>
@@ -100,9 +102,9 @@ const InventoryList = () => {
 				showModal={modal.showModal}
 				setShowModal={setModal}
 				modalTitle={`Delete ${modal.activeName} Inventory Item?`}
-				modalContent={`Please confirm that you'd like to delete the ${modal.activeName} item from inventory
-        list. You won’t be able to undo this action.`}
-				endpointUrl={`http://localhost:8080/${modal.activeId}`}
+				modalContent={`Please confirm that you'd like to delete the ${modal.activeName} item from inventory list. 
+				You won't be able to undo this action.`}
+				endpointUrl={`http://localhost:8080/inventory/${modal.activeId}`}
 			/>
 		</section>
 	);

@@ -6,6 +6,7 @@ import DeleteIcon from "../../../assets/icons/delete_outline-24px.svg";
 import EditIcon from "../../../assets/icons/edit-24px.svg";
 
 const InventoryCard = ({ item, openDeleteModal }) => {
+	// console.log(openDeleteModal);
 	return (
 		<div className="row__section">
 			<div className="row__content">
@@ -53,7 +54,7 @@ const InventoryCard = ({ item, openDeleteModal }) => {
 					className="row__delete-icon"
 					src={DeleteIcon}
 					alt=""
-					onClick={() => openDeleteModal(item.id, item.name)}
+					onClick={() => openDeleteModal(item.id, item.itemName)}
 				/>
 				<img className="row__edit-icon" src={EditIcon} alt="" />
 			</div>
