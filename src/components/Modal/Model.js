@@ -1,5 +1,5 @@
 import "./Modal.scss";
-import close from "../../assets/close-24px.svg";
+import close from "../../assets/icons/close-24px.svg";
 import axios from "axios";
 
 const Modal = ({
