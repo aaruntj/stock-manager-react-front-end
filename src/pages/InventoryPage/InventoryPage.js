@@ -55,10 +55,11 @@ const InventoryList = () => {
 								<img className="list__label-icon" src={ArrowSort} alt="" />
 							</div>
 							<div className="list__label-box">
-								<span className="list__label ">CATEGOTY</span>
+								<span className="list__label ">CATEGORY</span>
 								<img className="list__label-icon" src={ArrowSort} alt="" />
 							</div>
 						</div>
+
 						<div className="list__label-left">
 							<div className="list__label-box list__label-status">
 								<span className="list__label">STATUS</span>
