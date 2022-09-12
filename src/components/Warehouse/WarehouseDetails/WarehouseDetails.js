@@ -19,6 +19,7 @@ const WarehouseDetails = () => {
 	useEffect(() => {
 		const getWarehouseDetails = async () => {
 			try {
+				console.log(`${API_URL}/${warehouseId}/inventory`)
 				const response = await axios.get(`${API_URL}/${warehouseId}/inventory`);
 				console.log(response);
 				const warehouseDetailsData = await response.data.warehouseInventory;
