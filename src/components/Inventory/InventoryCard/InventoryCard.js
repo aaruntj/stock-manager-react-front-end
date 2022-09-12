@@ -55,7 +55,9 @@ const InventoryCard = ({ item, openDeleteModal }) => {
 					alt=""
 					onClick={() => openDeleteModal(item.id, item.itemName)}
 				/>
-				<img className="row__edit-icon" src={EditIcon} alt="" />
+				<Link to={`/add-or-edit-inventory/${item.id}`}>
+					<img className="row__edit-icon" src={EditIcon} alt="" />
+				</Link>
 			</div>
 		</div>
 	);

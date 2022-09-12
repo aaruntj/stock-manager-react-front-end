@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import "./InventoryPage.scss";
 
@@ -53,7 +54,9 @@ const InventoryList = () => {
 							placeholder="Search"
 						></input>
 					</div>
-					<button className="list__btn">+ Add New Item</button>
+					<Link to="/add-or-edit-inventory/">
+						<button className="list__btn">+ Add New Item</button>
+					</Link>
 				</div>
 			</div>
 			<div className="list__container">

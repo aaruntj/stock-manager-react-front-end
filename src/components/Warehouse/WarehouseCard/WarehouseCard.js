@@ -7,7 +7,6 @@ import DeleteIcon from "../../../assets/icons/delete_outline-24px.svg";
 import EditIcon from "../../../assets/icons/edit-24px.svg";
 
 function Warehouses({ warehouse, openDeleteModal }) {
-	console.log(openDeleteModal);
 	return (
 		<div className="row__section">
 			<div className="row__content5">
