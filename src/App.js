@@ -20,7 +20,8 @@ function App() {
 					<Route path="*" element={<ErrorPage />} />
 					<Route path="/inventory" element={<InventoryPage />} />
 					<Route path="/inventory/:itemId" element={<InventoryDetails />} />
-					<Route path="/add-inventory" element={<AddInventory />} />
+					<Route path="/add-or-edit-inventory/" element={<AddInventory />} />
+					<Route path="/add-or-edit-inventory/:itemId" element={<AddInventory />} />
 				</Routes>
 				<Footer />
 			</BrowserRouter>
