@@ -55,7 +55,9 @@ function Warehouses({ warehouse, openDeleteModal }) {
           alt=""
           onClick={() => openDeleteModal(warehouse.id, warehouse.name)}
         />
-        <img className="row__btn-icon" src={EditIcon} alt="" />
+        <Link to={`/warehouses/${warehouse.id}/edit`}>
+          <img className="row__btn-icon" src={EditIcon} alt="" />
+        </Link>
       </div>
     </div>
   );
