@@ -17,8 +17,7 @@ const InventoryList = () => {
 	useEffect(() => {
 		const getInventoryList = async () => {
 			try {
-				const response = await axios.get(`${API_URL}/inventory/list`);
-				console.log(response.data.inventoryData);
+				const response = await axios.get(`${API_URL}/inventory`);
 				const inventoryData = response.data.inventoryData;
 				setInventory(inventoryData);
 			} catch (error) {
@@ -36,30 +35,44 @@ const InventoryList = () => {
 		<section className="list__section">
 			<div className="list__header-container">
 				<h1 className="list__title">Inventory</h1>
-				<div className="list__searchBar"></div>
-				<button className="list__btn">+ Add New Item</button>
+				<div className="list__btn-container">
+					<div className="list__searchBar-container">
+						<input
+							className="list__searchBar"
+							type="text"
+							placeholder="Search"
+						></input>
+					</div>
+					<button className="list__btn">+ Add New Item</button>
+				</div>
 			</div>
 			<div className="list__container">
 				<div className="list__label-container">
-					<div className="list__label-box">
-						<span className="list__label ">INVENTORY ITEM</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">CATEGOTY</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">STATUS</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">QTY</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">WAREHOUSE</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
+					<div className="list__label-x">
+						<div className="list__label-right">
+							<div className="list__label-box">
+								<span className="list__label ">INVENTORY ITEM</span>
+								<img className="list__label-icon" src={ArrowSort} alt="" />
+							</div>
+							<div className="list__label-box">
+								<span className="list__label ">CATEGOTY</span>
+								<img className="list__label-icon" src={ArrowSort} alt="" />
+							</div>
+						</div>
+						<div className="list__label-left">
+							<div className="list__label-box list__label-status">
+								<span className="list__label">STATUS</span>
+								<img className="list__label-icon" src={ArrowSort} alt="" />
+							</div>
+							<div className="list__label-box">
+								<span className="list__label ">QTY</span>
+								<img className="list__label-icon" src={ArrowSort} alt="" />
+							</div>
+							<div className="list__label-box">
+								<span className="list__label ">WAREHOUSE</span>
+								<img className="list__label-icon" src={ArrowSort} alt="" />
+							</div>
+						</div>
 					</div>
 					<div className="list__label-box">
 						<span className="list__label ">ACTION</span>

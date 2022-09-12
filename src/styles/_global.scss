@@ -32,10 +32,11 @@ ul {
 		box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
 		border-radius: 3px;
 		margin: 0 5%;
+		margin-top: -4rem;
 	}
 
 	&__header-container {
-		padding: 1rem 0;
+		padding: 8% 5%;
 
 		@include tablet {
 			display: flex;
@@ -50,11 +51,49 @@ ul {
 		font-weight: 600;
 		@include page-header;
 	}
+	&__btn-container {
+		@include tablet {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	&__searchBar {
+		background-image: url("../assets/icons/search-24px.svg");
+		background-repeat: no-repeat;
+		background-position-x: 14rem;
+		background-position-y: 50%;
+		height: 2.25rem;
+		width: 16.4rem;
+		border-radius: 1.25rem;
+		border: 0.0625rem solid $cloud;
+		background-color: $white;
+		margin: 1rem 0;
+
+		&::placeholder {
+			padding-left: 1rem;
+		}
+		@include tablet {
+			width: 11.5625rem;
+			margin: 0;
+			background-position-x: 9.25rem;
+		}
+		&-container {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			@include tablet {
+				flex-direction: row;
+			}
+		}
+	}
 
 	&__btn {
+		width: 16.4rem;
 		display: flex;
 		align-items: center;
-		padding: 0.5rem 5.4rem;
+		padding: 0.5rem 4.4rem;
 		background: $instock-indigo;
 		border-radius: 1.25rem;
 		border: none;
@@ -66,6 +105,7 @@ ul {
 			width: 8rem;
 			height: 2.4rem;
 			padding: 0.5rem 1rem;
+			margin-left: 1rem;
 		}
 	}
 
@@ -79,15 +119,55 @@ ul {
 		}
 	}
 
+	&__label-right {
+		width: 40%;
+		display: flex;
+		justify-content: space-between;
+		@include desktop {
+			width: 37%;
+		}
+	}
+
+	&__label-left {
+		width: 51%;
+		display: flex;
+		justify-content: space-between;
+		@include desktop {
+			width: 49%;
+		}
+	}
 	&__label-box {
 		display: flex;
 		align-items: center;
+	}
+
+	&__label-x {
+		width: 91%;
+		display: flex;
+		justify-content: space-between;
+
+		@include desktop {
+			width: 81%;
+		}
 	}
 
 	&__label {
 		color: $slate;
 		font-weight: 600;
 		@include table-header;
+
+		&--status {
+			width: 13%;
+		}
+	}
+
+	&__label-status {
+		@include tablet {
+			padding-right: 1rem;
+		}
+		@include desktop {
+			padding-right: 2.6rem;
+		}
 	}
 
 	&__label-icon {
@@ -118,7 +198,11 @@ ul {
 		justify-content: space-between;
 
 		@include tablet {
-			width: 93%;
+			width: 90%;
+		}
+
+		@include desktop {
+			width: 85%;
 		}
 	}
 
@@ -126,7 +210,7 @@ ul {
 		width: 75%;
 
 		@include tablet {
-			width: 65%;
+			width: 55%;
 		}
 
 		@include tablet {
@@ -145,6 +229,17 @@ ul {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			width: 60%;
+
+			// &:nth-of-type(1) {
+			// 	flex-grow: 2;
+			// }
+			// &:nth-of-type(2) {
+			// 	flex-grow: 1;
+			// }
+			// &:nth-of-type(2) {
+			// 	flex-grow: 2;
+			// }
 		}
 	}
 
@@ -158,6 +253,10 @@ ul {
 		margin-bottom: 0.6rem;
 		@include tablet {
 			width: 45%;
+
+			&--status {
+				width: 70%;
+			}
 		}
 	}
 

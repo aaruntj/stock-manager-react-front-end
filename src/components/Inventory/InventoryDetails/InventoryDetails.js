@@ -11,7 +11,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 const InventoryDetails = () => {
 	const [item, setItem] = useState(null);
 	const [openModal, setOpenModal] = useState(false);
-	console.log(item);
+
 	const { itemId } = useParams();
 
 	//------- Fetch item details data ------
@@ -19,7 +19,6 @@ const InventoryDetails = () => {
 		const getItemDetails = async () => {
 			try {
 				const response = await axios.get(`${API_URL}/inventory/${itemId}`);
-				console.log(response);
 				const itemDetailsData = await response.data.inventoryItem;
 				setItem(itemDetailsData);
 			} catch (error) {
