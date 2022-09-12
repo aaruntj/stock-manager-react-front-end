@@ -22,45 +22,57 @@ function WarehouseDetails({ }) {
   let [contactPhone, setContactPhone] = useState("")
   let [contactEmail, setContactEmail] = useState("")
 
-  console.log(params.warehouseId)
-  axios.get("http://localhost:8080/"+ params.warehouseId).then((res) => {
-    console.log(res.data.warehouseSingle)
-    setWarhouseLocation(res.data.warehouseSingle.city)
-    setWarehouseAddress(res.data.warehouseSingle.address)
-    setContactName(res.data.warehouseSingle.contact.name)
-    setContactPosition(res.data.warehouseSingle.contact.position)
-    setContactPhone(res.data.warehouseSingle.contact.phone)
-    setContactEmail(res.data.warehouseSingle.contact.email)
+  // console.log(params.warehouseId)
 
-  })
+
 
 
   let [showDeleteModal, setshowDeleteModal] = useState(false)
   let [deleteItemName, setdeleteItemName] = useState("")
   let [deleteItemId, setdeleteItemId] = useState("")
 
-  useEffect(() => {
-		const getWarehouseDetails = async () => {
-			try {
-				console.log(`${API_URL}/${warehouseId}/inventory`)
-				const response = await axios.get(`${API_URL}/${warehouseId}/inventory`);
-				console.log(response);
-				const warehouseDetailsData = await response.data.warehouseInventory;
-				setWarehouse(warehouseDetailsData);
+  const getWarehouseDetails = () => {
+      
+    
+    axios.get(`${API_URL}/${warehouseId}/inventory`).then((response) => {
+      
+      
+    
+    
+      let warehouseDetailsData = response.data.warehouseInventory;
+    
+    
+    setWarehouse(warehouseDetailsData);
+    }).then(() => {
+    
+      axios.get("http://localhost:8080/" + params.warehouseId).then((res) => {
+    
+        console.log(res.data.warehouse)
+      setWarhouseLocation(res.data.warehouse.name)
+      setWarehouseAddress(res.data.warehouse.address)
+      setContactName(res.data.warehouse.name)
+      setContactPosition(res.data.warehouse.position)
+      setContactPhone(res.data.warehouse.phone)
+      setContactEmail(res.data.warehouse.email)
+      
+    })
+    })
+    // console.log(response);
 
-			} catch (error) {
-				console.log(error.message);
-			}
-		};
-		getWarehouseDetails();
-	}, [warehouseId]);
+};
+
+  useEffect(() => {
+    
+    
+    getWarehouseDetails();
+  }, [warehouseId]);
 
 
   //-------- safe guard ---------
-	if (warehouse === null || warehouse === undefined) {
-		return <h1>Loading...</h1>;
-	}
-
+  if (warehouse === null || warehouse === undefined) {
+    return <h1>Loading...</h1>;
+  }
+  
   return (
     <>
       <Modal
@@ -80,12 +92,9 @@ You won’t be able to undo this action.`}
               </Link>
               <div className="add-item-section__title"> {warehouseLocation} </div>
             </div>
-            {/* NEED EDIT WAREHOUSE PAGE */}
-            {/* <Link to="/"> */}
             <button className='warehouse-details-section__edit-button'>
               <img src={require('../../../assets/icons/edit-24px.svg').default} className="warehouse-details-section__edit-icon" alt="" />
             </button>
-            {/* </Link> */}
           </div>
           <div className="warehouse-details-section__contact-info">
             <div className="warehouse-details-section__address-block">
@@ -120,38 +129,38 @@ You won’t be able to undo this action.`}
           </div>
 
           <section className="list__section">
-			<div className="list__container">
-				<div className="list__label-container">
-					<div className="list__label-box">
-						<span className="list__label ">INVENTORY ITEM</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">CATEGORY</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">STATUS</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">QTY</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">ACTIONS</span>
-					</div>
-				</div>
-        {warehouse.map((warehouse, index) => (
-					<WarehouseInventory key={index} warehouse={warehouse} />
-				))}
-			</div>
-		</section>
+            <div className="list__container">
+              <div className="list__label-container">
+                <div className="list__label-box">
+                  <span className="list__label ">INVENTORY ITEM</span>
+                  <img className="list__label-icon" src={ArrowSort} alt="" />
+                </div>
+                <div className="list__label-box">
+                  <span className="list__label ">CATEGORY</span>
+                  <img className="list__label-icon" src={ArrowSort} alt="" />
+                </div>
+                <div className="list__label-box">
+                  <span className="list__label ">STATUS</span>
+                  <img className="list__label-icon" src={ArrowSort} alt="" />
+                </div>
+                <div className="list__label-box">
+                  <span className="list__label ">QTY</span>
+                  <img className="list__label-icon" src={ArrowSort} alt="" />
+                </div>
+                <div className="list__label-box">
+                  <span className="list__label ">ACTIONS</span>
+                </div>
+              </div>
+              {warehouse.map((warehouse, index) => (
+                <WarehouseInventory key={index} warehouse={warehouse} />
+              ))}
+            </div>
+          </section>
 
         </div>
-        
+
       </div>
-      
+
     </>
   )
 }
