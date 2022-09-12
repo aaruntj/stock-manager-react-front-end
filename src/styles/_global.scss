@@ -32,6 +32,7 @@ ul {
 		box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
 		border-radius: 3px;
 		margin: 0 5%;
+		margin-top: -4rem;
 	}
 
 	&__header-container {
@@ -50,11 +51,49 @@ ul {
 		font-weight: 600;
 		@include page-header;
 	}
+	&__btn-container {
+		@include tablet {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	&__searchBar {
+		background-image: url("../assets/icons/search-24px.svg");
+		background-repeat: no-repeat;
+		background-position-x: 14rem;
+		background-position-y: 50%;
+		height: 2.25rem;
+		width: 16.4rem;
+		border-radius: 1.25rem;
+		border: 0.0625rem solid $cloud;
+		background-color: $white;
+		margin: 1rem 0;
+
+		&::placeholder {
+			padding-left: 1rem;
+		}
+		@include tablet {
+			width: 11.5625rem;
+			margin: 0;
+			background-position-x: 9.25rem;
+		}
+		&-container {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			@include tablet {
+				flex-direction: row;
+			}
+		}
+	}
 
 	&__btn {
+		width: 16.4rem;
 		display: flex;
 		align-items: center;
-		padding: 0.5rem 5.4rem;
+		padding: 0.5rem 4.4rem;
 		background: $instock-indigo;
 		border-radius: 1.25rem;
 		border: none;
@@ -66,6 +105,7 @@ ul {
 			width: 8rem;
 			height: 2.4rem;
 			padding: 0.5rem 1rem;
+			margin-left: 1rem;
 		}
 	}
 

@@ -17,8 +17,7 @@ const InventoryList = () => {
 	useEffect(() => {
 		const getInventoryList = async () => {
 			try {
-				const response = await axios.get(`${API_URL}/inventory/list`);
-				console.log(response.data.inventoryData);
+				const response = await axios.get(`${API_URL}/inventory`);
 				const inventoryData = response.data.inventoryData;
 				setInventory(inventoryData);
 			} catch (error) {
@@ -36,8 +35,10 @@ const InventoryList = () => {
 		<section className="list__section">
 			<div className="list__header-container">
 				<h1 className="list__title">Inventory</h1>
-				<div className="list__searchBar"></div>
-				<button className="list__btn">+ Add New Item</button>
+				<div className="list__btn-container">
+					<div className="list__searchBar"></div>
+					<button className="list__btn">+ Add New Item</button>
+				</div>
 			</div>
 			<div className="list__container">
 				<div className="list__label-container">
