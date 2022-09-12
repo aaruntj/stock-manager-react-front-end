@@ -1,5 +1,5 @@
 import "./Modal.scss";
-import close from "../../assets/close-24px.svg";
+import close from "../../assets/icons/close-24px.svg";
 import axios from "axios";
 
 const Modal = ({
@@ -30,7 +30,7 @@ const Modal = ({
               src={close}
               alt="close"
               onClick={() => {
-                setShowModal();
+                setShowModal({...Modal, showModal: !showModal});
               }}
             />
             <h1 className="modal__title">{modalTitle}</h1>
@@ -39,7 +39,7 @@ const Modal = ({
               <button
                 className="modal__button modal__button--cancel"
                 onClick={() => {
-                  setShowModal();
+                  setShowModal({...Modal, showModal: !showModal});
                 }}
               >
                 Cancel
