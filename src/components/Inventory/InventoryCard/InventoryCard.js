@@ -27,7 +27,7 @@ const InventoryCard = ({ item }) => {
 				</div>
 
 				<div className="row__container-left">
-					<div className="row__box">
+					<div className="row__box row__box--status">
 						<span className="row__label row__hide">STATUS</span>
 						<p
 							className={`${

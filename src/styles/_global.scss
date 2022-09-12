@@ -119,15 +119,55 @@ ul {
 		}
 	}
 
+	&__label-right {
+		width: 40%;
+		display: flex;
+		justify-content: space-between;
+		@include desktop {
+			width: 37%;
+		}
+	}
+
+	&__label-left {
+		width: 51%;
+		display: flex;
+		justify-content: space-between;
+		@include desktop {
+			width: 49%;
+		}
+	}
 	&__label-box {
 		display: flex;
 		align-items: center;
+	}
+
+	&__label-x {
+		width: 91%;
+		display: flex;
+		justify-content: space-between;
+
+		@include desktop {
+			width: 81%;
+		}
 	}
 
 	&__label {
 		color: $slate;
 		font-weight: 600;
 		@include table-header;
+
+		&--status {
+			width: 13%;
+		}
+	}
+
+	&__label-status {
+		@include tablet {
+			padding-right: 1rem;
+		}
+		@include desktop {
+			padding-right: 2.6rem;
+		}
 	}
 
 	&__label-icon {
@@ -158,7 +198,11 @@ ul {
 		justify-content: space-between;
 
 		@include tablet {
-			width: 93%;
+			width: 90%;
+		}
+
+		@include desktop {
+			width: 85%;
 		}
 	}
 
@@ -166,7 +210,7 @@ ul {
 		width: 75%;
 
 		@include tablet {
-			width: 65%;
+			width: 55%;
 		}
 
 		@include tablet {
@@ -185,6 +229,17 @@ ul {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			width: 60%;
+
+			// &:nth-of-type(1) {
+			// 	flex-grow: 2;
+			// }
+			// &:nth-of-type(2) {
+			// 	flex-grow: 1;
+			// }
+			// &:nth-of-type(2) {
+			// 	flex-grow: 2;
+			// }
 		}
 	}
 
@@ -198,6 +253,10 @@ ul {
 		margin-bottom: 0.6rem;
 		@include tablet {
 			width: 45%;
+
+			&--status {
+				width: 70%;
+			}
 		}
 	}
 
