@@ -12,47 +12,47 @@ const { useEffect, useState } = require("react");
 const API_URL = process.env.REACT_APP_API_URL;
 
 function WarehousesPage() {
-  const [warehouse, setWarehouse] = useState(null);
-  const [modal, setModal] = useState({
-    showModal: false,
-    activeId: "",
-    activeName: "",
-  });
+	const [warehouse, setWarehouse] = useState(null);
+	const [modal, setModal] = useState({
+		showModal: false,
+		activeId: "",
+		activeName: "",
+	});
 
-  //----- Fetch Warehouse List -------
-  useEffect(() => {
-    const getWarehouseList = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/`);
-        console.log(response.data);
-        const warehouseData = response.data;
-        setWarehouse(warehouseData);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    console.log("run");
-    getWarehouseList();
-  }, [modal.showModal]);
+	//----- Fetch Warehouse List -------
+	useEffect(() => {
+		const getWarehouseList = async () => {
+			try {
+				const response = await axios.get(`${API_URL}/`);
+				console.log(response.data);
+				const warehouseData = response.data;
+				setWarehouse(warehouseData);
+			} catch (error) {
+				console.log(error.message);
+			}
+		};
+		console.log("run");
+		getWarehouseList();
+	}, [modal.showModal]);
 
-  const openDeleteModal = (id, name) => {
-    setModal({ showModal: !modal.showModal, activeName: name, activeId: id });
-  };
+	const openDeleteModal = (id, name) => {
+		setModal({ showModal: !modal.showModal, activeName: name, activeId: id });
+	};
 
-  if (warehouse === null || warehouse === undefined) {
-    return <h1>Loading...</h1>;
-  }
+	if (warehouse === null || warehouse === undefined) {
+		return <h1>Loading...</h1>;
+	}
 
-  return (
-    <section className="list__section">
-      <div className="list__header-container">
-        <h1 className="list__title">Warehouses</h1>
-        <div className="warehouse__searchBar-container">
-          <input
-            className="warehouse__searchBar"
-            type="text"
-            placeholder="Search"
-          ></input>
+	return (
+		<section className="list__section">
+			<div className="list__header-container">
+				<h1 className="list__title">Warehouses</h1>
+				<div className="warehouse__searchBar-container">
+					<input
+						className="warehouse__searchBar"
+						type="text"
+						placeholder="Search"
+					></input>
 
           <Link to="/warehouses/add">
             <div className="warehouse__btn">+ Add New Warehouse</div>
