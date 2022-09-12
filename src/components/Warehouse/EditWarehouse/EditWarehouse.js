@@ -116,11 +116,11 @@ function EditWarehouse() {
           email: warehouse.contact.email,
         },
       };
-      // axios
-      //   .put(`http://localhost:8080/warehouses/${warehouse.id}`, editWarehouse)
-      //   .then((response) => {
-      //     navigateWarehousePage();
-      //   });
+      axios
+        .put(`http://localhost:8080/warehouses/${warehouse.id}`, editWarehouse)
+        .then((response) => {
+          navigateWarehousePage();
+        });
     }
   };
   // Function to set formsubmitted state on successful submision
