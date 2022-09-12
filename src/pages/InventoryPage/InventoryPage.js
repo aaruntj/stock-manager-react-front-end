@@ -36,9 +36,9 @@ const InventoryList = () => {
 			<div className="list__header-container">
 				<h1 className="list__title">Inventory</h1>
 				<div className="list__btn-container">
-					<div className="list__searchBar">
+					<div className="list__searchBar-container">
 						<input
-							className="warehouse__searchBar"
+							className="list__searchBar"
 							type="text"
 							placeholder="Search"
 						></input>
