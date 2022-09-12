@@ -22,6 +22,7 @@ function TextInput({
         {label}
         <input
           name={name}
+          placeholder = {label}
           className={`input${!isValid ? " input--not-valid" : ""}`}
           type="text"
           onChange={handleChange}

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Modal from "../../components/Modal/Model";
-
+import { Link } from 'react-router-dom';
 import "./WarehousesPage.scss";
 
 import WarehouseCard from "../../components/Warehouse/WarehouseCard/WarehouseCard";
@@ -54,49 +54,51 @@ function WarehousesPage() {
 						placeholder="Search"
 					></input>
 
-					<div className="warehouse__btn">+ Add New Warehouse</div>
-				</div>
-			</div>
-			<div className="list__container">
-				<div className="list__label-container">
-					<div className="list__label-box">
-						<span className="list__label ">WAREHOUSE</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">ADDRESS</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">CONTACT NAME</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">CONTACT INFORMATION</span>
-						<img className="list__label-icon" src={ArrowSort} alt="" />
-					</div>
-					<div className="list__label-box">
-						<span className="list__label ">ACTION</span>
-					</div>
-				</div>
-				{warehouse.warehouseData.map((warehouse, index) => (
-					<WarehouseCard
-						key={index}
-						warehouse={warehouse}
-						openDeleteModal={openDeleteModal}
-					/>
-				))}
-			</div>
-			<Modal
-				showModal={modal.showModal}
-				setShowModal={setModal}
-				modalTitle={`Delete ${modal.activeName} warehouse?`}
-				modalContent={`Please confirm that you'd like to delete the ${modal.activeName} warehouse from the
-        list of warehouses. You won't be able to undo this action.`}
-				endpointUrl={`http://localhost:8080/${modal.activeId}`}
-			/>
-		</section>
-	);
+          <Link to="/warehouses/add">
+            <div className="warehouse__btn">+ Add New Warehouse</div>
+          </Link>
+        </div>
+      </div>
+      <div className="list__container">
+        <div className="list__label-container">
+          <div className="list__label-box">
+            <span className="list__label ">WAREHOUSE</span>
+            <img className="list__label-icon" src={ArrowSort} alt="" />
+          </div>
+          <div className="list__label-box">
+            <span className="list__label ">ADDRESS</span>
+            <img className="list__label-icon" src={ArrowSort} alt="" />
+          </div>
+          <div className="list__label-box">
+            <span className="list__label ">CONTACT NAME</span>
+            <img className="list__label-icon" src={ArrowSort} alt="" />
+          </div>
+          <div className="list__label-box">
+            <span className="list__label ">CONTACT INFORMATION</span>
+            <img className="list__label-icon" src={ArrowSort} alt="" />
+          </div>
+          <div className="list__label-box">
+            <span className="list__label ">ACTION</span>
+          </div>
+        </div>
+        {warehouse.warehouseData.map((warehouse, index) => (
+          <WarehouseCard
+            key={index}
+            warehouse={warehouse}
+            openDeleteModal={openDeleteModal}
+          />
+        ))}
+      </div>
+      <Modal
+        showModal={modal.showModal}
+        setShowModal={setModal}
+        modalTitle={`Delete ${modal.activeName} warehouse?`}
+        modalContent={`Please confirm that you’d like to delete the ${modal.activeName} warehouse from the
+        list of warehouses. You won’t be able to undo this action.`}
+        endpointUrl={`http://localhost:8080/${modal.activeId}`}
+      />
+    </section>
+  );
 }
 
 export default WarehousesPage;
