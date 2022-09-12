@@ -1,11 +1,26 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import "./EditWarehouse.scss";
 import backArrow from "../../../assets/icons/arrow_back-24px.svg";
 import TextInput from "../TextInput/TextInput";
 
-function EditWarehouse({ warehouseData }) {
+function EditWarehouse() {
+  const { warehouseId } = useParams();
+  let warehouseData = {
+    id: "2922c286-16cd-4d43-ab98-c79f698aeab0",
+    name: "Manhattan",
+    address: "503 Broadway",
+    city: "New York",
+    country: "USA",
+    contact: {
+      name: "Parmin Aujla",
+      position: "Warehouse Manager",
+      phone: "+1 (646) 123-1234",
+      email: "paujla@instock.com",
+    },
+  };
+
   //State to track changed warehouse values
   const [warehouse, setWarehouse] = useState(warehouseData);
   //States to check Validity of input fields
