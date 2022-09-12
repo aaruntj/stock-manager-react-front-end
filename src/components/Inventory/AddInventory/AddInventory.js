@@ -8,10 +8,8 @@ import { useState } from 'react'
 
 function AddInventory() {
   const navigate = useNavigate();
-  console.log("hi")
   let param = useParams()
   console.log(process.env.REACT_APP_API_URL)
-
 
   let [inventoryName, setInventoryName] = useState("")
   let [inventoryDescription, setInventoryDescription] = useState("")
@@ -100,12 +98,12 @@ function AddInventory() {
       }
       ) 
     } else {
-      delete objToSend["id"]; 
+      // delete objToSend["id"]; 
       console.log(objToSend)
-      // axios.post(`${process.env.REACT_APP_API_URL}/inventory/`, objToSend).then(() => {
-      //   // navigate(-1)
-      //   return
-      // })
+      axios.post(`${process.env.REACT_APP_API_URL}/inventory/`, objToSend).then(() => {
+        navigate(-1)
+        return
+      })
     }
 
     //
