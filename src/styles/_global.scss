@@ -336,15 +336,19 @@ ul {
 		@include tablet {
 			width: 7%;
 		}
+
+		@include desktop {
+			width: 5%;
+		}
 	}
 
-	&__btn-icon {
+	&__edit-icon {
 		width: 1.12rem;
 		height: 1.12rem;
+	}
 
-		@include tablet {
-			width: 0.9rem;
-			height: 1.12rem;
-		}
+	&__delete-icon {
+		width: 0.9rem;
+		height: 1.12rem;
 	}
 }

@@ -6,7 +6,6 @@ import DeleteIcon from "../../../assets/icons/delete_outline-24px.svg";
 import EditIcon from "../../../assets/icons/edit-24px.svg";
 
 const InventoryCard = ({ item }) => {
-	console.log(item);
 	return (
 		<div className="row__section">
 			<div className="row__content">
@@ -50,8 +49,8 @@ const InventoryCard = ({ item }) => {
 				</div>
 			</div>
 			<div className="row__btn-container">
-				<img className="row__btn-icon" src={DeleteIcon} alt="" />
-				<img className="row__btn-icon" src={EditIcon} alt="" />
+				<img className="row__delete-icon" src={DeleteIcon} alt="" />
+				<img className="row__edit-icon" src={EditIcon} alt="" />
 			</div>
 		</div>
 	);
