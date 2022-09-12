@@ -92,9 +92,11 @@ function AddInventory() {
 
     if (Object.keys(param).length > 0) {
       //if there were params i.e. if this is an edit request
-      console.log(`${process.env.REACT_APP_API_URL}/${inventoryId}`)
+      // console.log(`${process.env.REACT_APP_API_URL}/${inventoryId}`)
       axios.put(`${process.env.REACT_APP_API_URL}/inventory/`, objToSend).then(() => {
+        console.log("objectupdated")
         navigate(-1)
+        
       }
       ) 
     } else {
@@ -118,9 +120,9 @@ function AddInventory() {
 
           <div className="add-item-section__header">
 
-            <Link to="/inventory">
-              <img src={require('../../../assets/icons/arrow_back-24px.svg').default} className="add-item-section__header-icon" alt="" />
-            </Link>
+            
+              <img src={require('../../../assets/icons/arrow_back-24px.svg').default} className="add-item-section__header-icon" alt="" onClick={() => {navigate(-1)}} />
+            
             <div className="add-item-section__title">{!param ? "Add New Inventory" : "Edit Inventory Item"}</div>
           </div>
           <form className='add-item-form' >

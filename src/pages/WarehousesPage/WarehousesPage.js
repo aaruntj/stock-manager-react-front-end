@@ -18,6 +18,7 @@ function WarehousesPage() {
 		activeId: "",
 		activeName: "",
 	});
+
 	console.log(modal.activeName);
 	//----- Fetch Warehouse List -------
 	useEffect(() => {
