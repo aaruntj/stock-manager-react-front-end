@@ -1,10 +1,19 @@
 import "./TextInput.scss";
 import error from "../../../assets/icons/error-24px.svg";
 
-function TextInput({ name, label, value, isValid, setValid, onChange }) {
+function TextInput({
+  name,
+  label,
+  value,
+  formValid,
+  isValid,
+  formName,
+  setValid,
+  onChange,
+}) {
   const handleChange = (event) => {
     onChange(event);
-    setValid(true);
+    setValid({ ...formValid, [formName]: true });
   };
 
   return (
@@ -19,7 +28,9 @@ function TextInput({ name, label, value, isValid, setValid, onChange }) {
           value={value}
         />
         <div
-          className={`error-message${!isValid ? " error-message--visible" : ""}`}
+          className={`error-message${
+            !isValid ? " error-message--visible" : ""
+          }`}
         >
           <img className="error-message__img" src={error} alt="Error icon " />
           <p className="error-message__text">This field is required</p>
