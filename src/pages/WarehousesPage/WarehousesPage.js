@@ -31,8 +31,9 @@ function WarehousesPage() {
         console.log(error.message);
       }
     };
+    console.log("run");
     getWarehouseList();
-  }, []);
+  }, [modal.showModal]);
 
   const openDeleteModal = (id, name) => {
     setModal({ showModal: !modal.showModal, activeName: name, activeId: id });
