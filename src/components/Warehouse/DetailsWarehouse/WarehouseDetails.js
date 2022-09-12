@@ -1,55 +1,65 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom';
 import Modal from '../../Modal/Model';
 import WarehouseInventoryListItem from '../../WarehouseInventoryListItem/WarehouseInventoryListItem';
 import './WarehouseDetails.scss'
-
-let testArray = [
-  {
-    "id": "9b4f79ea-0e6c-4e59-8e05-afd933d0b3d3",
-    "warehouseID": "2922c286-16cd-4d43-ab98-c79f698aeab0",
-    "warehouseName": "Manhattan",
-    "itemName": "Television",
-    "description": "This 50\", 4K LED TV provides a crystal-clear picture and vivid colors.",
-    "category": "Electronics",
-    "status": "In Stock",
-    "quantity": 500
-  },
-  {
-    "id": "83433026-ca32-4c6d-bd86-a39ee8b7303e",
-    "warehouseID": "2922c286-16cd-4d43-ab98-c79f698aeab0",
-    "warehouseName": "Manhattan",
-    "itemName": "Gym Bag",
-    "description": "Made out of military-grade synthetic materials, this gym bag is highly durable, water resistant, and easy to clean.",
-    "category": "Gear",
-    "status": "Out of Stock",
-    "quantity": 0
-  },
-  {
-    "id": "a193a6a7-42ab-4182-97dc-555ee85e7486",
-    "warehouseID": "2922c286-16cd-4d43-ab98-c79f698aeab0",
-    "warehouseName": "Manhattan",
-    "itemName": "Hoodie",
-    "description": "A simple 100% cotton hoodie, this is an essential piece for any wardrobe.",
-    "category": "Apparel",
-    "status": "Out of Stock",
-    "quantity": 0
-  },
-]
+import axios from 'axios'
+import ArrowIcon from "../../../assets/icons/arrow_back-24px.svg";
+import EditIcon from "../../../assets/icons/edit-24px.svg";
+import ArrowSort from "../../../assets/icons/sort-24px.svg";
+import WarehouseInventory from "../WarehouseInventory/WarehouseInventory";
+const API_URL = process.env.REACT_APP_API_URL;
 
 
-function WarehouseDetails({ warehouseLocation, warehouseAddress, warehouseContact }) {
-  let contactName = warehouseContact.name;
-  let contactPosition = warehouseContact.position;
-  let contactPhone = warehouseContact.phone;
-  let contactEmail = warehouseContact.email;
-  let filteredArray = testArray.filter(e => e.warehouseName === "Manhattan")
-  console.log(filteredArray)
+function WarehouseDetails({ }) {
+  let params = useParams()
+  const [warehouse, setWarehouse] = useState(null);
+  const { warehouseId } = useParams();
+  let [warehouseLocation, setWarhouseLocation] = useState("")
+  let [warehouseAddress, setWarehouseAddress] = useState("")
+  let [contactName, setContactName] = useState("")
+  let [contactPosition, setContactPosition] = useState("")
+  let [contactPhone, setContactPhone] = useState("")
+  let [contactEmail, setContactEmail] = useState("")
+
+  console.log(params.warehouseId)
+  axios.get("http://localhost:8080/"+ params.warehouseId).then((res) => {
+    console.log(res.data.warehouseSingle)
+    setWarhouseLocation(res.data.warehouseSingle.city)
+    setWarehouseAddress(res.data.warehouseSingle.address)
+    setContactName(res.data.warehouseSingle.contact.name)
+    setContactPosition(res.data.warehouseSingle.contact.position)
+    setContactPhone(res.data.warehouseSingle.contact.phone)
+    setContactEmail(res.data.warehouseSingle.contact.email)
+
+  })
+
 
   let [showDeleteModal, setshowDeleteModal] = useState(false)
   let [deleteItemName, setdeleteItemName] = useState("")
   let [deleteItemId, setdeleteItemId] = useState("")
 
+  useEffect(() => {
+		const getWarehouseDetails = async () => {
+			try {
+				console.log(`${API_URL}/${warehouseId}/inventory`)
+				const response = await axios.get(`${API_URL}/${warehouseId}/inventory`);
+				console.log(response);
+				const warehouseDetailsData = await response.data.warehouseInventory;
+				setWarehouse(warehouseDetailsData);
+
+			} catch (error) {
+				console.log(error.message);
+			}
+		};
+		getWarehouseDetails();
+	}, [warehouseId]);
+
+
+  //-------- safe guard ---------
+	if (warehouse === null || warehouse === undefined) {
+		return <h1>Loading...</h1>;
+	}
 
   return (
     <>
@@ -108,18 +118,40 @@ You won’t be able to undo this action.`}
               </div>
             </div>
           </div>
-          {filteredArray.map((passedObj, i) => {
-            return <WarehouseInventoryListItem
-              warehouseInventoryObj={filteredArray[i]}
-              key={i}
-              showModal={showDeleteModal}
-              setShowModal={setshowDeleteModal}
-              setdeleteItemName={setdeleteItemName}
-              setdeleteItemId={setdeleteItemId}
-            />
-          })}
+
+          <section className="list__section">
+			<div className="list__container">
+				<div className="list__label-container">
+					<div className="list__label-box">
+						<span className="list__label ">INVENTORY ITEM</span>
+						<img className="list__label-icon" src={ArrowSort} alt="" />
+					</div>
+					<div className="list__label-box">
+						<span className="list__label ">CATEGORY</span>
+						<img className="list__label-icon" src={ArrowSort} alt="" />
+					</div>
+					<div className="list__label-box">
+						<span className="list__label ">STATUS</span>
+						<img className="list__label-icon" src={ArrowSort} alt="" />
+					</div>
+					<div className="list__label-box">
+						<span className="list__label ">QTY</span>
+						<img className="list__label-icon" src={ArrowSort} alt="" />
+					</div>
+					<div className="list__label-box">
+						<span className="list__label ">ACTIONS</span>
+					</div>
+				</div>
+        {warehouse.map((warehouse, index) => (
+					<WarehouseInventory key={index} warehouse={warehouse} />
+				))}
+			</div>
+		</section>
+
         </div>
+        
       </div>
+      
     </>
   )
 }
