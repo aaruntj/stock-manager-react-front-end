@@ -18,7 +18,6 @@ const InventoryList = () => {
 		activeId: "",
 		activeName: "",
 	});
-	// console.log(modal, modal.activeId, modal.activeName);
 
 	//----- Fetch Inventory List -------
 	useEffect(() => {
@@ -35,7 +34,6 @@ const InventoryList = () => {
 	}, [modal.showModal]);
 
 	const openDeleteModal = (id, name) => {
-		console.log(id, name);
 		setModal({ showModal: !modal.showModal, activeName: name, activeId: id });
 	};
 
