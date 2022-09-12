@@ -1,39 +1,40 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import "./EditWarehouse.scss";
 import backArrow from "../../../assets/icons/arrow_back-24px.svg";
 import TextInput from "../TextInput/TextInput";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function EditWarehouse() {
   const { warehouseId } = useParams();
-  let warehouseData = {
-    id: "2922c286-16cd-4d43-ab98-c79f698aeab0",
-    name: "Manhattan",
-    address: "503 Broadway",
-    city: "New York",
-    country: "USA",
-    contact: {
-      name: "Parmin Aujla",
-      position: "Warehouse Manager",
-      phone: "+1 (646) 123-1234",
-      email: "paujla@instock.com",
-    },
-  };
-
-  //State to track changed warehouse values
-  const [warehouse, setWarehouse] = useState(warehouseData);
-  //States to check Validity of input fields
-  const [warehouseNameValid, setWarehouseNameValid] = useState(true);
-  const [addressValid, setAddressValid] = useState(true);
-  const [cityValid, setCityValid] = useState(true);
-  const [countryValid, setCountryValid] = useState(true);
-  const [contactNameValid, setContactNameValid] = useState(true);
-  const [positionValid, setPositionValid] = useState(true);
-  const [phoneValid, setPhoneValid] = useState(true);
-  const [emailValid, setEmailValid] = useState(true);
-  // Create state to trigger page redirect on succesfull Uploa
+  const [warehouse, setWarehouse] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formValid, setFormValid] = useState({
+    warehouseName: true,
+    address: true,
+    city: true,
+    country: true,
+    contactName: true,
+    position: true,
+    phone: true,
+    email: true,
+    form: true,
+  });
+
+  // ------- Fetch warehouse details data ------
+  useEffect(() => {
+    const getWarehouseDetails = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/${warehouseId}`);
+        const warehouseDetailsData = await response.data.warehouseSingle;
+        setWarehouse(warehouseDetailsData);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getWarehouseDetails();
+  }, [warehouseId]);
 
   // Function to update Warehouse detail text inputs on change
   const handleChangeWarehouse = (event) => {
@@ -64,28 +65,36 @@ function EditWarehouse() {
       return true;
     } else {
       if (!warehouse.name) {
-        setWarehouseNameValid(false);
+        // setWarehouseNameValid(false);
+        setFormValid({ ...formValid, warehouseName: false });
       }
       if (!warehouse.address) {
-        setAddressValid(false);
+        // setAddressValid(false);
+        setFormValid({ ...formValid, address: false });
       }
       if (!warehouse.city) {
-        setCityValid(false);
+        // setCityValid(false);
+        setFormValid({ ...formValid, city: false });
       }
       if (!warehouse.country) {
-        setCountryValid(false);
+        // setCountryValid(false);
+        setFormValid({ ...formValid, country: false });
       }
       if (!warehouse.contact.name) {
-        setContactNameValid(false);
+        // setContactNameValid(false);
+        setFormValid({ ...formValid, contactName: false });
       }
       if (!warehouse.contact.position) {
-        setPositionValid(false);
+        // setPositionValid(false);
+        setFormValid({ ...formValid, position: false });
       }
       if (!warehouse.contact.phone) {
-        setPhoneValid(false);
+        // setPhoneValid(false);
+        setFormValid({ ...formValid, phone: false });
       }
       if (!warehouse.contact.email) {
-        setEmailValid(false);
+        // setEmailValid(false);
+        setFormValid({ ...formValid, email: false });
       }
       return false;
     }
@@ -122,7 +131,9 @@ function EditWarehouse() {
   if (formSubmitted) {
     return <Navigate to="/warehouses" />;
   }
-
+  if (!warehouse) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <div className="component">
       <div className="component__header">
@@ -139,32 +150,40 @@ function EditWarehouse() {
               name={"name"}
               label={"Warehouse Name"}
               value={warehouse.name}
-              isValid={warehouseNameValid}
-              setValid={setWarehouseNameValid}
+              formValid={formValid}
+              isValid={formValid.warehouseName}
+              formName={"warehouseName"}
+              setValid={setFormValid}
               onChange={handleChangeWarehouse}
             />
             <TextInput
               name={"address"}
               label={"Street Address"}
               value={warehouse.address}
-              isValid={addressValid}
-              setValid={setAddressValid}
+              formValid={formValid}
+              isValid={formValid.address}
+              formName={"address"}
+              setValid={setFormValid}
               onChange={handleChangeWarehouse}
             />
             <TextInput
               name={"city"}
               label={"City"}
               value={warehouse.city}
-              isValid={cityValid}
-              setValid={setCityValid}
+              formValid={formValid}
+              isValid={formValid.city}
+              formName={"city"}
+              setValid={setFormValid}
               onChange={handleChangeWarehouse}
             />
             <TextInput
               name={"country"}
               label={"Country"}
               value={warehouse.country}
-              isValid={countryValid}
-              setValid={setCountryValid}
+              formValid={formValid}
+              isValid={formValid.country}
+              formName={"country"}
+              setValid={setFormValid}
               onChange={handleChangeWarehouse}
             />
           </div>
@@ -174,32 +193,40 @@ function EditWarehouse() {
               name={"name"}
               label={"Contact Name"}
               value={warehouse.contact.name}
-              isValid={contactNameValid}
-              setValid={setContactNameValid}
+              formValid={formValid}
+              isValid={formValid.contactName}
+              formName={"contactName"}
+              setValid={setFormValid}
               onChange={handleChangeContact}
             />
             <TextInput
               name={"position"}
               label={"Position"}
               value={warehouse.contact.position}
-              isValid={positionValid}
-              setValid={setPositionValid}
+              formValid={formValid}
+              isValid={formValid.position}
+              formName={"position"}
+              setValid={setFormValid}
               onChange={handleChangeContact}
             />
             <TextInput
               name={"phone"}
               label={"Phone Number"}
               value={warehouse.contact.phone}
-              isValid={phoneValid}
-              setValid={setPhoneValid}
+              formValid={formValid}
+              isValid={formValid.phone}
+              formName={"phone"}
+              setValid={setFormValid}
               onChange={handleChangeContact}
             />
             <TextInput
               name={"email"}
               label={"Email"}
               value={warehouse.contact.email}
-              isValid={emailValid}
-              setValid={setEmailValid}
+              formValid={formValid}
+              isValid={formValid.email}
+              formName={"email"}
+              setValid={setFormValid}
               onChange={handleChangeContact}
             />
           </div>
