@@ -8,7 +8,6 @@ import EditIcon from "../../../assets/icons/edit-24px.svg";
 
 function Warehouses({warehouse, openDeleteModal}) {
 	
-	// console.log(warehouse)
 	return (
 		<div className="row__section">
 			<div className="row__content5wh">

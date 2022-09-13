@@ -77,8 +77,6 @@ function AddInventory() {
     var quantityValue = document.querySelector(".item-availability__quantity-input").value;
     var warehouseValue = document.querySelector(".item-availability__item-warehouse-input").value;
     let objToSend = {
-      //need to generate an id on the server side
-      //need to find the correct warehouse id
       warehouseName: inventoryWarehouse,
       itemName: inventoryName,
       description: inventoryDescription,
@@ -88,19 +86,16 @@ function AddInventory() {
       id: inventoryId
     }
     const stringifiedObject = JSON.stringify(objToSend);
-    // console.log(objToSend)
+
 
     if (Object.keys(param).length > 0) {
-      //if there were params i.e. if this is an edit request
-      // console.log(`${process.env.REACT_APP_API_URL}/${inventoryId}`)
+
       axios.put(`${process.env.REACT_APP_API_URL}/inventory/`, objToSend).then(() => {
-        // console.log("objectupdated")
         navigate(-1)
         
       }
       ) 
     } else {
-      // delete objToSend["id"]; 
       console.log("is it making it this far?")
       console.log(`${process.env.REACT_APP_API_URL}/inventory/`)
       console.log(objToSend)
@@ -110,7 +105,6 @@ function AddInventory() {
       })
     }
 
-    //
   }
 
 

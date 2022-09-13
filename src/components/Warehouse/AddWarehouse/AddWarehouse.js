@@ -64,35 +64,27 @@ function AddWarehouse() {
       return true;
     } else {
       if (!warehouse.name) {
-        // setWarehouseNameValid(false);
         setFormValid({ ...formValid, warehouseName: false });
       }
       if (!warehouse.address) {
-        // setAddressValid(false);
         setFormValid({ ...formValid, address: false });
       }
       if (!warehouse.city) {
-        // setCityValid(false);
         setFormValid({ ...formValid, city: false });
       }
       if (!warehouse.country) {
-        // setCountryValid(false);
         setFormValid({ ...formValid, country: false });
       }
       if (!warehouse.contact.name) {
-        // setContactNameValid(false);
         setFormValid({ ...formValid, contactName: false });
       }
       if (!warehouse.contact.position) {
-        // setPositionValid(false);
         setFormValid({ ...formValid, position: false });
       }
       if (!warehouse.contact.phone) {
-        // setPhoneValid(false);
         setFormValid({ ...formValid, phone: false });
       }
       if (!warehouse.contact.email) {
-        // setEmailValid(false);
         setFormValid({ ...formValid, email: false });
       }
       return false;

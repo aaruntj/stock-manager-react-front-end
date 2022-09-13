@@ -54,7 +54,6 @@ function WarehouseDetails({ }) {
 
       })
     })
-    // console.log(response);
 
   };
 

@@ -10,7 +10,6 @@
     justify-content: space-between;
 
     @include tablet {
-      // width: 64.85vw;
       width: 85%;
     }
     @include desktop {

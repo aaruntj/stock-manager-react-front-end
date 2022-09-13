@@ -18,10 +18,7 @@ function WarehouseInventoryListItem({ warehouseInventoryObj, setShowModal, setde
                 <span>{warehouseInventoryObj.status}</span>
                 <span>{warehouseInventoryObj.quantity}</span>
                 <button onClick={deleteButtonHandler}>delete</button>
-                {/* NEED TO LINK TO PROPER PAGE */}
-                {/* <Link to={`/`}> */}
                 <button>edit</button>
-                {/* </div></Link> */}
             </div>
 
 
