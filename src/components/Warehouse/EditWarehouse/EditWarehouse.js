@@ -27,6 +27,7 @@ function EditWarehouse() {
         const warehouseDetailsData = await response.data.warehouse;
         setWarehouse(warehouseDetailsData);
       } catch (error) {
+        alert("Error on Submit, Try Again");
         console.log(error.message);
       }
     };
@@ -61,21 +62,32 @@ function EditWarehouse() {
     ) {
       return true;
     } else {
-      if (!warehouse.name) {
+      if (warehouse.name === "") {
         setWarehouseNameValid(false);
-      } else if (!warehouse.address) {
+      }
+      if (warehouse.address === "") {
         setAddressValid(false);
-      } else if (!warehouse.city) {
+      }
+      if (warehouse.city === "") {
         setCityValid(false);
-      } else if (!warehouse.country) {
+      }
+      if (warehouse.country === "") {
         setCountryValid(false);
-      } else if (!warehouse.contact.name) {
+      }
+      if (warehouse.contact.name === "") {
         setContactNameValid(false);
-      } else if (!warehouse.contact.position) {
+      }
+      if (warehouse.contact.position === "") {
         setPositionValid(false);
-      } else if (!warehouse.contact.phone) {
+      }
+      if (warehouse.contact.phone === "") {
         setPhoneValid(false);
-      } else if (!warehouse.contact.email) {
+      }
+      if (
+        warehouse.contact.email === "" ||
+        !warehouse.contact.email ||
+        warehouse.contact.email === null
+      ) {
         setEmailValid(false);
       }
       return false;
