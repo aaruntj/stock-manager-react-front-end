@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Header from "./components/Header/Header";
+import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
+import InventoryPage from "./pages/InventoryPage/InventoryPage";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import Footer from "./components/Footer/Footer";
+import InventoryDetails from "./components/Inventory/InventoryDetails/InventoryDetails";
+import WarehouseDetails from "./components/Warehouse/DetailsWarehouse/WarehouseDetails";
+import AddInventory from "./components/Inventory/AddInventory/AddInventory";
+import AddWarehouse from "./components/Warehouse/AddWarehouse/AddWarehouse";
+import EditWarehouse from "./components/Warehouse/EditWarehouse/EditWarehouse";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<BrowserRouter>
+				<Header />
+				<Routes>
+					<Route path="/" element={<Navigate to="/warehouses" />} />
+					<Route path="/warehouses" element={<WarehousesPage />} />
+					<Route path="/warehouses/:warehouseId" element={<WarehouseDetails />} />
+					<Route path="/warehouses/add" element={<AddWarehouse />} />
+					<Route path="/warehouses/:warehouseId/edit" element={<EditWarehouse />} />
+					<Route path="*" element={<ErrorPage />} />
+					<Route path="/inventory" element={<InventoryPage />} />
+					<Route path="/inventory/:itemId" element={<InventoryDetails />} />
+					<Route path="/add-or-edit-inventory/" element={<AddInventory />} />
+					<Route path="/add-or-edit-inventory/:itemId" element={<AddInventory />} />
+				</Routes>
+				<Footer />
+			</BrowserRouter>
+		</>
+	);
 }
 
 export default App;

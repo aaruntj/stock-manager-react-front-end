@@ -1,0 +1,52 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+@use '../../../styles/colours' as *;
+@use '../../../styles/typography' as *;
+@use '../../../styles/global' as *;
+
+.row{
+	&__content5wh {
+		display: flex;
+		justify-content: space-between;
+
+		@include tablet {
+      width: 92%;
+		}
+    @include desktop{
+      width: 95%;
+    }
+	}
+	&__container5wh-right {
+		width: 75%;
+
+		@include tablet {
+			width: 85%;
+		}
+
+		@include tablet {
+			flex-direction: row;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+    @include desktop {
+      width: 60%;
+    }
+	}
+    &__container5wh-left {
+		width: 76%;
+
+		@include tablet {
+			flex-direction: row;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+      width: 64%;
+		}
+    @include desktop {
+      width: 50%;
+      padding-left: 2%;
+    }
+	}
+}
+

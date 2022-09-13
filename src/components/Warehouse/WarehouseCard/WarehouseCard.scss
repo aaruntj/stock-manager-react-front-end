@@ -1,0 +1,94 @@
+@use "../../../styles/mixins" as *;
+@use "../../../styles/variables" as *;
+@use "../../../styles/colours" as *;
+@use "../../../styles/typography" as *;
+@use "../../../styles/global" as *;
+
+.row {
+  &__content5 {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      width: 85%;
+    }
+    @include desktop {
+      width: 87%;
+    }
+  }
+  &__container5-right {
+    width: 75%;
+
+    @include tablet {
+      width: 45%;
+    }
+
+    @include tablet {
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @media (min-width: 53.125rem) {
+      width: 46%;
+    }
+    @media (min-width: 59.375rem) {
+      width: 47%;
+    }
+    @media (min-width: 65.625rem) {
+      width: 48%;
+    }
+    @media (min-width: 71.875rem) {
+      width: 48.25%;
+    }
+    @media (min-width: 78.125rem) {
+      width: 48.5%;
+    }
+    @include desktop {
+      width: 56%;
+			padding-right: 2%;
+    }
+    @media (min-width: 84.375rem) {
+      width: 57%;
+    }
+  }
+  &__container5-left {
+    width: 76%;
+
+    @include tablet {
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 55%;
+      padding-left: 2%;
+    }
+    @media (min-width: 53.125rem) {
+      width: 53.5%;
+    }
+    @media (min-width: 59.375rem) {
+      width: 53%;
+    }
+    @media (min-width: 65.625rem) {
+      width: 52%;
+      padding-left: 2%;
+    }
+    @media (min-width: 71.875rem) {
+      width: 51.5%;
+      padding-left: 2%;
+    }
+    @media (min-width: 78.125rem) {
+      width: 50.5%;
+    }
+    @include desktop {
+      width: 58%;
+      padding-left: 2%;
+    }
+    @media (min-width: 84.375rem) {
+      width: 59%;
+    }
+  }
+  &__btn-icon {
+    cursor: pointer;
+  }
+}

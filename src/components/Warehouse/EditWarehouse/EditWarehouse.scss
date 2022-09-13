@@ -1,0 +1,166 @@
+@use "../../../styles/colours" as *;
+@use "../../../styles/global" as *;
+@use "../../../styles/mixins" as *;
+@use "../../../styles/typography" as *;
+
+.component {
+  font-family: "Titillium Web", sans-serif, "Times New Roman", Times, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $white;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+  border-radius: 3px;
+  margin: 0 1rem;
+  margin-top: -4rem;
+  @include tablet {
+    margin: 0 2rem;
+    margin-top: -4rem;
+  }
+  @include desktop {
+    max-width: 1020px;
+    margin: 0 auto;
+    margin-top: -4rem;
+  }
+  &__title {
+    @include page-header;
+    margin-left: 0.75rem;
+  }
+  &__header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-bottom: 1px solid $cloud;
+    padding: 2rem 1.5rem 1.5rem;
+    &-back {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+  &__container {
+    width: 100%;
+    border-bottom: 1px solid $cloud;
+    padding: 1rem;
+    &--contacts {
+      border-bottom: none;
+    }
+    @include tablet {
+      border-bottom: none;
+      border-right: 1px solid $cloud;
+      padding: 0 2rem;
+      margin: 1.5rem 0;
+      &--contacts {
+        border-right: none;
+      }
+    }
+  }
+  &__subtitle {
+    @include subheader;
+    margin-bottom: 1.5rem;
+  }
+  &__label {
+    @include labels-links-buttons;
+    font-weight: 700;
+    position: relative;
+  }
+  &__input {
+    outline: none;
+    height: 36px;
+    width: 100%;
+    border-radius: 20px;
+    padding: 0 1rem;
+    border: 1px solid $cloud;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    &:focus {
+      border: 1px solid $instock-indigo;
+    }
+    &--not-valid {
+      border: 1px solid $red;
+    }
+  }
+}
+
+.button {
+  @include labels-links-buttons;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 20px;
+  height: 2.25rem;
+  width: 100%;
+  cursor: pointer;
+  @include tablet {
+    padding: 0.5rem 1rem;
+    width: auto;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    background-color: $lightgrey;
+    padding: 1rem;
+    @include tablet {
+      justify-content: flex-end;
+      padding: 1rem 2rem;
+    }
+  }
+  &--cancel {
+    color: $slate;
+    background-color: $white;
+    border: 1px solid $cloud;
+    margin-right: 1rem;
+    &:hover {
+      border: 1px solid $instock-indigo;
+      color: $instock-indigo;
+    }
+  }
+  &--save {
+    background-color: $instock-indigo;
+    color: $white;
+    &:hover {
+      background-color: $graphite;
+    }
+  }
+}
+
+.error-message {
+  visibility: hidden;
+  &--visible {
+    visibility: visible;
+  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  bottom: -30px;
+  &__img {
+    height: 13px;
+    margin-right: 5px;
+  }
+  &__text {
+    font-size: 12px;
+    color: $red;
+    width: 10rem;
+  }
+}

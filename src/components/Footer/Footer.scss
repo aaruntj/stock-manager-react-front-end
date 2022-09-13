@@ -1,0 +1,33 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+@use '../../styles/colours' as *;
+@use '../../styles/typography' as *;
+@use '../../styles/global' as *;
+
+
+
+.footer{
+  font-family: 'Titillium Web'; ;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  &__text{
+    color: $slate;
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    font-weight: 400;
+    padding: 2.5rem 0rem;
+
+    @include tablet{
+      padding-bottom: 2.5rem;
+      padding-top: 4.375rem;
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+    }
+
+    @include desktop{
+      padding-bottom: 3rem;
+      padding-top: 5.9375rem;
+    }
+  }
+}
