@@ -101,14 +101,14 @@ function AddWarehouse() {
     event.preventDefault()
 
     if (isFormValid()){
-      const name = event.target.name.value
-      const address = event.target.address.value
-      const city = event.target.city.value
-      const country = event.target.country.value
-      const contactName = event.target.contactName.value
-      const contactPosition = event.target.position.value
-      const contactPhone = event.target.phone.value
-      const contactEmail = event.target.email.value
+      const name = warehouse.name
+      const address = warehouse.address
+      const city = warehouse.city
+      const country = warehouse.country
+      const contactName = warehouse.contact.name
+      const contactPosition = warehouse.contact.position
+      const contactPhone = warehouse.contact.phone
+      const contactEmail = warehouse.contact.email
 
       axios
         .post("http://localhost:8080/", {
@@ -184,7 +184,7 @@ function AddWarehouse() {
             <div className="form__container form__container--contacts">
               <h2 className="form__subtitle">Contact Details</h2>
               <TextInput
-                name={"contactName"}
+                name={"name"}
                 label={"Contact Name"}
                 value={warehouse.contact.name}
                 formValid={formValid}

@@ -21,18 +21,20 @@ function WarehouseDetails({ }) {
   let [contactPosition, setContactPosition] = useState("")
   let [contactPhone, setContactPhone] = useState("")
   let [contactEmail, setContactEmail] = useState("")
+  let [warehouseCity, setWarehouseCity] = useState("")
   let [showDeleteModal, setshowDeleteModal] = useState(false)
   let [deleteItemName, setdeleteItemName] = useState("")
   let [deleteItemId, setdeleteItemId] = useState("")
+  const [modal, setModal] = useState({
+		showModal: false,
+		activeId: "",
+		activeName: "",
+	});
 
   const getWarehouseDetails = () => {
 
     console.log("warehouseId:", warehouseId)
     axios.get(`${API_URL}/${warehouseId}/inventory`).then((response) => {
-
-
-
-
       let warehouseDetailsData = response.data.warehouseInventory;
 
 
@@ -44,10 +46,11 @@ function WarehouseDetails({ }) {
         console.log(res.data.warehouse)
         setWarhouseLocation(res.data.warehouse.name)
         setWarehouseAddress(res.data.warehouse.address)
-        setContactName(res.data.warehouse.name)
-        setContactPosition(res.data.warehouse.position)
-        setContactPhone(res.data.warehouse.phone)
-        setContactEmail(res.data.warehouse.email)
+        setContactName(res.data.warehouse.contact.name)
+        setContactPosition(res.data.warehouse.contact.position)
+        setContactPhone(res.data.warehouse.contact.phone)
+        setContactEmail(res.data.warehouse.contact.email)
+        setWarehouseCity(res.data.warehouse.city)
 
       })
     })
@@ -59,7 +62,7 @@ function WarehouseDetails({ }) {
 
 
     getWarehouseDetails();
-  }, [warehouseId]);
+  }, [warehouseId, modal.showModal]);
 
 
   //-------- safe guard ---------
@@ -67,16 +70,14 @@ function WarehouseDetails({ }) {
     return <h1>Loading...</h1>;
   }
 
+  const openDeleteModal = (id, name) => {
+    
+		setModal({ showModal: !modal.showModal, activeName: name, activeId: id });
+	};
+
   return (
     <>
-      <Modal
-        showModal={showDeleteModal}
-        setShowModal={setshowDeleteModal}
-        modalTitle={`Delete ${deleteItemName} inventory item?`}
-        modalContent={`Please confirm that you’d like to delete ${deleteItemName} from the inventory list.
-You won’t be able to undo this action.`}
-        endpointUrl="NEED TO FINISH"
-      />
+      
 
 
       <section className="list__section">
@@ -101,7 +102,8 @@ You won’t be able to undo this action.`}
                   WAREHOUSE ADDRESS:
                 </div>
                 <div className="warehouse-details-section__address-text">
-                  {warehouseAddress}
+                  {warehouseAddress} <br />
+                  {warehouseCity}
                 </div>
               </div>
               <div className="warehouse-details-section__name-and-contact">
@@ -155,11 +157,22 @@ You won’t be able to undo this action.`}
             </div>
           </div>
           {warehouse.map((warehouse, index) => (
-            <WarehouseInventory key={index} warehouse={warehouse} />
+            <WarehouseInventory 
+            key={index} 
+            warehouse={warehouse} 
+            openDeleteModal={openDeleteModal}
+            />
           ))}
         </div>
       </section>
-
+      <Modal
+        showModal={modal.showModal}
+        setShowModal={setModal}
+        modalTitle={`Delete ${modal.activeName} inventory item?`}
+        modalContent={`Please confirm that you’d like to delete ${modal.activeName} from the inventory list.
+You won’t be able to undo this action.`}
+        endpointUrl={`${API_URL}/inventory/${modal.activeId}`}
+      />
     </>
   )
 }

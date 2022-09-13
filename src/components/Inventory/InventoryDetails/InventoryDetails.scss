@@ -69,6 +69,18 @@
 	&__icon {
 		width: 1rem;
 		height: 1rem;
+		cursor: pointer;
+
+		@include tablet {
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+	}
+
+	&__edit-icon {
+		width: 1rem;
+		height: 1rem;
+		cursor: pointer;
 	}
 
 	&__details {

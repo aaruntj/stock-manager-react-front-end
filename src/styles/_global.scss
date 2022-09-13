@@ -61,10 +61,10 @@ ul {
 	&__searchBar {
 		background-image: url("../assets/icons/search-24px.svg");
 		background-repeat: no-repeat;
-		background-position-x: 14rem;
+		background-position-x: 95%;
 		background-position-y: 50%;
 		height: 2.25rem;
-		width: 16.4rem;
+		width: 100%;
 		border-radius: 1.25rem;
 		border: 0.0625rem solid $cloud;
 		background-color: $white;
@@ -90,9 +90,10 @@ ul {
 	}
 
 	&__btn {
-		width: 16.4rem;
+		width: 100%;
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		padding: 0.5rem 4.4rem;
 		background: $instock-indigo;
 		border-radius: 1.25rem;
@@ -100,6 +101,7 @@ ul {
 		color: $white;
 		font-weight: 600;
 		font-size: 0.8rem;
+		cursor: pointer;
 
 		@include tablet {
 			width: 8rem;
@@ -286,6 +288,7 @@ ul {
 		text-decoration: none;
 		display: flex;
 		align-items: center;
+		cursor: pointer;
 	}
 
 	&__status-green {
@@ -345,10 +348,12 @@ ul {
 	&__edit-icon {
 		width: 1.12rem;
 		height: 1.12rem;
+		cursor: pointer;
 	}
 
 	&__delete-icon {
 		width: 0.9rem;
 		height: 1.12rem;
+		cursor: pointer;
 	}
 }

@@ -123,7 +123,7 @@ function AddInventory() {
             
               <img src={require('../../../assets/icons/arrow_back-24px.svg').default} className="add-item-section__header-icon" alt="" onClick={() => {navigate(-1)}} />
             
-            <div className="add-item-section__title">{!param ? "Add New Inventory" : "Edit Inventory Item"}</div>
+            <div className="add-item-section__title">{Object.keys(param).length === 0 ? "Add New Inventory" : "Edit Inventory Item"}</div>
           </div>
           <form className='add-item-form' >
             <div className="details-and-availability">
