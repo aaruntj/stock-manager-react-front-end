@@ -6,7 +6,9 @@ import ArrowIcon from "../../../assets/icons/chevron_right-24px.svg";
 import DeleteIcon from "../../../assets/icons/delete_outline-24px.svg";
 import EditIcon from "../../../assets/icons/edit-24px.svg";
 
-function Warehouses({warehouse}) {
+function Warehouses({warehouse, openDeleteModal}) {
+	
+	// console.log(warehouse)
 	return (
 		<div className="row__section">
 			<div className="row__content5wh">
@@ -45,7 +47,7 @@ function Warehouses({warehouse}) {
 				</div>
 			</div>
 			<div className="row__btn-container">
-				<img className="row__btn-icon" src={DeleteIcon} alt="" />
+				<img className="row__btn-icon" src={DeleteIcon} alt="" onClick={() => openDeleteModal(warehouse.id, warehouse.itemName)} />
 				<Link to={`/add-or-edit-inventory/${warehouse.id}`} >
 				<img className="row__btn-icon" src={EditIcon} alt="" />
 				</Link>
