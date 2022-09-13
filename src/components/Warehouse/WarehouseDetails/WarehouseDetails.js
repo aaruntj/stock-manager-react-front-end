@@ -19,7 +19,6 @@ const WarehouseDetails = () => {
 	useEffect(() => {
 		const getWarehouseDetails = async () => {
 			try {
-				console.log(`${API_URL}/${warehouseId}/inventory`)
 				const response = await axios.get(`${API_URL}/${warehouseId}/inventory`);
 				console.log(response);
 				const warehouseDetailsData = await response.data.warehouseInventory;
@@ -46,7 +45,7 @@ const WarehouseDetails = () => {
 				<button className="list__btn">Edit</button>
 			</div>
 			<div className="list__container">
-				<div className="list__label-container">
+				<div className="list__label-container5">
 					<div className="list__label-box">
 						<span className="list__label ">INVENTORY ITEM</span>
 						<img className="list__label-icon" src={ArrowSort} alt="" />
