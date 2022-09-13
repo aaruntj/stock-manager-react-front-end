@@ -41,7 +41,7 @@ const InventoryDetails = () => {
 					</Link>
 					<h1 className="inventory-item__title">{item.itemName}</h1>
 				</div>
-				<Link to="/add-or-edit-inventory/:itemId">
+				<Link to={`/add-or-edit-inventory/${item.id}`}>
 					<div className="inventory-item__btn-container">
 						<img className="inventory-item__edit-icon" src={EditIcon} alt="" />
 						<span className="inventory-item__btn-text">Edit</span>

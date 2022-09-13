@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react'
 import './AddInventory.scss'
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useState } from 'react'
 
@@ -88,19 +88,21 @@ function AddInventory() {
       id: inventoryId
     }
     const stringifiedObject = JSON.stringify(objToSend);
-    console.log(objToSend)
+    // console.log(objToSend)
 
     if (Object.keys(param).length > 0) {
       //if there were params i.e. if this is an edit request
       // console.log(`${process.env.REACT_APP_API_URL}/${inventoryId}`)
       axios.put(`${process.env.REACT_APP_API_URL}/inventory/`, objToSend).then(() => {
-        console.log("objectupdated")
+        // console.log("objectupdated")
         navigate(-1)
         
       }
       ) 
     } else {
       // delete objToSend["id"]; 
+      console.log("is it making it this far?")
+      console.log(`${process.env.REACT_APP_API_URL}/inventory/`)
       console.log(objToSend)
       axios.post(`${process.env.REACT_APP_API_URL}/inventory/`, objToSend).then(() => {
         navigate(-1)
@@ -185,7 +187,7 @@ function AddInventory() {
                   <option value="Manhattan">Manhattan</option>
                   <option value="Washington">Washington</option>
                   <option value="Jersey">Jersey</option>
-                  <option value="SanFran">San Fran</option>
+                  <option value="San Fran">San Fran</option>
                   <option value="Santa Monica">Santa Monica</option>
                   <option value="Seattle">Seattle</option>
                   <option value="Miami">Miami</option>

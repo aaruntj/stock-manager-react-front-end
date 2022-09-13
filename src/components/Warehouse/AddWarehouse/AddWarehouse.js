@@ -1,10 +1,12 @@
 import axios from "axios"
 import { useState, useEffect } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import backArrow from "../../../assets/icons/arrow_back-24px.svg";
 import TextInput from "../TextInput/TextInput";
 
 function AddWarehouse() {
+
+  const navigate = useNavigate()
 
   const [warehouse, setWarehouse] = useState({
     name: "",
@@ -123,6 +125,7 @@ function AddWarehouse() {
         })
         .then(response =>{
           alert("successfully added warehouse")
+          navigate("/warehouses")
         })
     }
   }
