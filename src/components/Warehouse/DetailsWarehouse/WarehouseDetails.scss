@@ -11,11 +11,7 @@
     align-items: center;
     
     &__content {
-        border-radius: 4px;
-        box-shadow: 0px 2px 5px rgba($color: #13182C, $alpha: 0.2);
-        width: 95%;
-        
-        
+        width: 100%;
     }
     &__header {
         display: flex;
