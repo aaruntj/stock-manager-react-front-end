@@ -27,7 +27,7 @@ function EditWarehouse() {
     const getWarehouseDetails = async () => {
       try {
         const response = await axios.get(`${API_URL}/${warehouseId}`);
-        const warehouseDetailsData = await response.data.warehouseSingle;
+        const warehouseDetailsData = await response.data.warehouse;
         setWarehouse(warehouseDetailsData);
       } catch (error) {
         console.log(error.message);
@@ -117,7 +117,7 @@ function EditWarehouse() {
         },
       };
       axios
-        .put(`http://localhost:8080/warehouses/${warehouse.id}`, editWarehouse)
+        .put(`http://localhost:8080/${warehouse.id}`, editWarehouse)
         .then((response) => {
           navigateWarehousePage();
         });
