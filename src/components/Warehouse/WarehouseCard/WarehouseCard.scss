@@ -14,7 +14,7 @@
       width: 85%;
     }
     @include desktop {
-      width: 85%;
+      width: 87%;
     }
   }
   &__container5-right {
@@ -30,8 +30,27 @@
       align-items: center;
       justify-content: space-between;
     }
+    @media (min-width: 53.125rem) {
+      width: 46%;
+    }
+    @media (min-width: 59.375rem) {
+      width: 47%;
+    }
+    @media (min-width: 65.625rem) {
+      width: 48%;
+    }
+    @media (min-width: 71.875rem) {
+      width: 48.25%;
+    }
+    @media (min-width: 78.125rem) {
+      width: 48.5%;
+    }
     @include desktop {
-      width: 55%;
+      width: 56%;
+			padding-right: 2%;
+    }
+    @media (min-width: 84.375rem) {
+      width: 57%;
     }
   }
   &__container5-left {
@@ -43,11 +62,31 @@
       align-items: center;
       justify-content: space-between;
       width: 55%;
-      padding-left: 6%;
+      padding-left: 2%;
+    }
+    @media (min-width: 53.125rem) {
+      width: 53.5%;
+    }
+    @media (min-width: 59.375rem) {
+      width: 53%;
+    }
+    @media (min-width: 65.625rem) {
+      width: 52%;
+      padding-left: 2%;
+    }
+    @media (min-width: 71.875rem) {
+      width: 51.5%;
+      padding-left: 2%;
+    }
+    @media (min-width: 78.125rem) {
+      width: 50.5%;
     }
     @include desktop {
-      width: 55%;
-      padding-left: 4%;
+      width: 58%;
+      padding-left: 2%;
+    }
+    @media (min-width: 84.375rem) {
+      width: 59%;
     }
   }
   &__btn-icon {
