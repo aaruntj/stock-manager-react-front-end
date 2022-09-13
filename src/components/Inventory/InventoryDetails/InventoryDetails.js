@@ -10,7 +10,6 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const InventoryDetails = () => {
 	const [item, setItem] = useState(null);
-	const [openModal, setOpenModal] = useState(false);
 
 	const { itemId } = useParams();
 
@@ -28,11 +27,6 @@ const InventoryDetails = () => {
 		getItemDetails();
 	}, [itemId]);
 
-	//------- Open Modal Handler ----------
-	const clickModal = () => {
-		setOpenModal(true);
-	};
-
 	//-------- safe guard ---------
 	if (item === null || item === undefined) {
 		return <h1>Loading...</h1>;
@@ -47,15 +41,12 @@ const InventoryDetails = () => {
 					</Link>
 					<h1 className="inventory-item__title">{item.itemName}</h1>
 				</div>
-				<div className="inventory-item__btn-container">
-					<img
-						className="inventory-item__icon"
-						src={EditIcon}
-						alt=""
-						onClick={clickModal}
-					/>
-					<span className="inventory-item__btn-text">Edit</span>
-				</div>
+				<Link to="/add-or-edit-inventory/:itemId">
+					<div className="inventory-item__btn-container">
+						<img className="inventory-item__edit-icon" src={EditIcon} alt="" />
+						<span className="inventory-item__btn-text">Edit</span>
+					</div>
+				</Link>
 			</div>
 			<div className="inventory-item__details">
 				<div className="inventory-item__right">
