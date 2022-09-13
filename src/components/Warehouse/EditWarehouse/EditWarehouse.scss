@@ -12,12 +12,15 @@
   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
   border-radius: 3px;
   margin: 0 1rem;
+  margin-top: -4rem;
   @include tablet {
     margin: 0 2rem;
+    margin-top: -4rem;
   }
   @include desktop {
     max-width: 1020px;
     margin: 0 auto;
+    margin-top: -4rem;
   }
   &__title {
     @include page-header;
