@@ -21,6 +21,7 @@ function WarehouseDetails({ }) {
   let [contactPosition, setContactPosition] = useState("")
   let [contactPhone, setContactPhone] = useState("")
   let [contactEmail, setContactEmail] = useState("")
+  let [warehouseCity, setWarehouseCity] = useState("")
   let [showDeleteModal, setshowDeleteModal] = useState(false)
   let [deleteItemName, setdeleteItemName] = useState("")
   let [deleteItemId, setdeleteItemId] = useState("")
@@ -44,10 +45,11 @@ function WarehouseDetails({ }) {
         console.log(res.data.warehouse)
         setWarhouseLocation(res.data.warehouse.name)
         setWarehouseAddress(res.data.warehouse.address)
-        setContactName(res.data.warehouse.name)
-        setContactPosition(res.data.warehouse.position)
-        setContactPhone(res.data.warehouse.phone)
-        setContactEmail(res.data.warehouse.email)
+        setContactName(res.data.warehouse.contact.name)
+        setContactPosition(res.data.warehouse.contact.position)
+        setContactPhone(res.data.warehouse.contact.phone)
+        setContactEmail(res.data.warehouse.contact.email)
+        setWarehouseCity(res.data.warehouse.city)
 
       })
     })
@@ -101,7 +103,8 @@ You won’t be able to undo this action.`}
                   WAREHOUSE ADDRESS:
                 </div>
                 <div className="warehouse-details-section__address-text">
-                  {warehouseAddress}
+                  {warehouseAddress} <br />
+                  {warehouseCity}
                 </div>
               </div>
               <div className="warehouse-details-section__name-and-contact">
