@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./InventoryPage.scss";
 
-import Modal from "../../components/Modal/Model";
+import Modal from "../../components/Modal/Modal";
 import InventoryCard from "../../components/Inventory/InventoryCard/InventoryCard";
 import ArrowSort from "../../assets/icons/sort-24px.svg";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Modal from "../../components/Modal/Model";
+import Modal from "../../components/Modal/Modal";
 import { Link } from "react-router-dom";
 import "./WarehousesPage.scss";
 

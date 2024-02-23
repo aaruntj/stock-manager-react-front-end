@@ -201,7 +201,7 @@ function AddInventory() {
             </div>
           </form>
         </section>
-        <div className="add-item-section__header-background"></div>s
+        <div className="add-item-section__header-background"></div>
       </div>
     </>)
 }

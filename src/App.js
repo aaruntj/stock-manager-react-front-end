@@ -21,11 +21,11 @@ function App() {
 					<Route path="/warehouses/:warehouseId" element={<WarehouseDetails />} />
 					<Route path="/warehouses/add" element={<AddWarehouse />} />
 					<Route path="/warehouses/:warehouseId/edit" element={<EditWarehouse />} />
-					<Route path="*" element={<ErrorPage />} />
 					<Route path="/inventory" element={<InventoryPage />} />
 					<Route path="/inventory/:itemId" element={<InventoryDetails />} />
 					<Route path="/add-or-edit-inventory/" element={<AddInventory />} />
 					<Route path="/add-or-edit-inventory/:itemId" element={<AddInventory />} />
+					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 				<Footer />
 			</BrowserRouter>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
-import Modal from '../../Modal/Model';
-import WarehouseInventoryListItem from '../../WarehouseInventoryListItem/WarehouseInventoryListItem';
+import Modal from '../../Modal/Modal';
+// import WarehouseInventoryListItem from '../../WarehouseInventoryListItem/WarehouseInventoryListItem';
 import './WarehouseDetails.scss'
 import axios from 'axios'
 import ArrowIcon from "../../../assets/icons/arrow_back-24px.svg";
